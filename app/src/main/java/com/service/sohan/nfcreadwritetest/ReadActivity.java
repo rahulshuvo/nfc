@@ -71,8 +71,8 @@ import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class ReadActivity extends AppCompatActivity {
-
-    String TAG = "PhoneActivityTAGReader";
+    private final String TAG = "nfc_"+this.getClass().getSimpleName();
+    //String TAG = "PhoneActivityTAGReader";
     Activity activity = ReadActivity.this;
     String wantPermission = Manifest.permission.READ_PHONE_STATE;
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -130,7 +130,11 @@ public class ReadActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validate()==null){
-                    if (webSelected) {
+                    if(contactListSelected && webSelected){
+                        sharedValue = "0";
+                        postReaderData(sharedValue);
+                    }
+                    else if (webSelected) {
                         sharedValue = "1";
                         postReaderData(sharedValue);
                         //Toast.makeText(getApplicationContext(), "Web called", Toast.LENGTH_LONG).show();
@@ -243,6 +247,7 @@ public class ReadActivity extends AppCompatActivity {
             phoneNumber = "";
             devicePhone.setText("");
         }
+        //testRead();
     }
 
     public void onCheckboxClicked(View view) {
@@ -548,6 +553,32 @@ public class ReadActivity extends AppCompatActivity {
             return false;
     }
 
+    public void testRead(){
+        String text = "{\"fn\":\"nTunvir Rahman test android write 2\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"ak\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
+
+        JsonObject convertedObject = new Gson().fromJson(text.trim(), JsonObject.class);
+
+        name.setText(convertedObject.get("fn").toString().replaceAll("^\"|\"$", ""));
+        lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
+        cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
+        address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
+        city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
+        state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
+        email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
+        workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
+        company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
+        workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
+        faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
+        websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
+        realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
+        otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
+        etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
+        categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
+        etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
+        etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
+        region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
+        zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
+    }
 
     private void readFromIntent(Intent intent) {
         String action = intent.getAction();
@@ -565,74 +596,137 @@ public class ReadActivity extends AppCompatActivity {
             buildTagViews(msgs);
         }
     }
+
+
+//    private void buildTagViews(NdefMessage[] msgs) {
+//        if (msgs == null || msgs.length == 0) return;
+//
+//        String text = "";
+////        String tagId = new String(msgs[0].getRecords()[0].getType());
+//        byte[] payload = msgs[0].getRecords()[0].getPayload();
+//        Log.d(TAG, "payload "+payload);
+//        String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16"; // Get the Text Encoding
+//        Log.d(TAG, "Text encoding "+text);
+//        int languageCodeLength = payload[0] & 0063; // Get the Language Code, e.g. "en"
+//        Log.d(TAG, "language code length "+languageCodeLength);
+//        // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
+//
+//        try {
+//            // Get the Text
+//            text = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
+//            Log.d(TAG, "Retrieved Text "+text);
+//            Log.d(TAG, "payload "+payload+" language Code length "+languageCodeLength+" textEncoding "+textEncoding+" payload length "+payload.length);
+//            //Toast.makeText(getApplicationContext(), text.toString(), Toast.LENGTH_LONG).show();
+//        } catch (UnsupportedEncodingException e) {
+//            Log.d(TAG, "UnsupportedEncoding"+ e.toString());
+//        }
+////        readTag.setText("NFC Content: " + text);
+//        try {
+//            //JSONObject jsonObject = new JSONObject(text.toString());  //"{\"phonetype\":\"N95\",\"cat\":\"WP\"}"
+////            JsonParser jsonParser = new JsonParser();
+////            JsonObject jo = (JsonObject)jsonParser.parse(text);
+////            JsonObject jsonObject = (new JsonParser()).parse(text).getAsJsonObject();
+////            Log.d(TAG, "Test "+jsonObject.get("FirstName"));
+//
+//            JsonObject convertedObject = new Gson().fromJson(text.trim().replace("\\u{02}en",""), JsonObject.class);
+//
+//            name.setText(convertedObject.get("fn").toString().replaceAll("^\"|\"$", ""));
+//            lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
+//            cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
+//            address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
+//            city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
+//            state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
+//            email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
+//            workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
+//            company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
+//            workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
+//            faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
+//            websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
+//            realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
+//            otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
+//            etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
+//            categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
+//            etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
+//            etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
+//            region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
+//            zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
+//
+//
+//
+//
+////            workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
+////            faxNumber = (EditText)findViewById(R.id.etFaxNumber);
+////            websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
+////            realPhone = (EditText)findViewById(R.id.etRealPhone);
+////            otherInfo = (EditText)findViewById(R.id.etOtherInfo);
+////            etcontactType = (EditText)findViewById(R.id.etContactType);
+////            categoryType = (EditText)findViewById(R.id.etCategory);
+//        }catch (Exception e){
+//            Log.d(TAG, "Exception in reading "+e.toString());
+//        }
+////        catch (JSONException err){
+////            Log.d("Error", err.toString());
+////        }
+////        catch (UnsupportedEncodingException e) {
+////            e.printStackTrace();
+////        }
+//    }
+
     private void buildTagViews(NdefMessage[] msgs) {
         if (msgs == null || msgs.length == 0) return;
 
         String text = "";
-//        String tagId = new String(msgs[0].getRecords()[0].getType());
         byte[] payload = msgs[0].getRecords()[0].getPayload();
-        String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16"; // Get the Text Encoding
-        int languageCodeLength = payload[0] & 0063; // Get the Language Code, e.g. "en"
-        // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
-
         try {
-            // Get the Text
-            text = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
-            Log.d(TAG, "Retrieved Text "+text);
-            //Toast.makeText(getApplicationContext(), text.toString(), Toast.LENGTH_LONG).show();
-        } catch (UnsupportedEncodingException e) {
-            Log.d(TAG, "UnsupportedEncoding"+ e.toString());
-        }
-//        readTag.setText("NFC Content: " + text);
-        try {
-            //JSONObject jsonObject = new JSONObject(text.toString());  //"{\"phonetype\":\"N95\",\"cat\":\"WP\"}"
-//            JsonParser jsonParser = new JsonParser();
-//            JsonObject jo = (JsonObject)jsonParser.parse(text);
-//            JsonObject jsonObject = (new JsonParser()).parse(text).getAsJsonObject();
-//            Log.d(TAG, "Test "+jsonObject.get("FirstName"));
+            text = new String(payload, "UTF-8");
+            JsonObject convertedObject = new Gson().fromJson(text.trim().replace("en{\"a\":","{\"a\":"), JsonObject.class);
 
-            JsonObject convertedObject = new Gson().fromJson(text.trim().replace("\\u{02}en",""), JsonObject.class);
+//            name.setText(convertedObject.get("fn").toString().replaceAll("^\"|\"$", ""));
+//            lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
+//            cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
+//            address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
+//            city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
+//            state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
+//            email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
+//            workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
+//            company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
+//            workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
+//            faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
+//            websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
+//            categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
+//            etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
+//            realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
+//            otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
+//            etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
+//            etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
+//            zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
+//            region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
 
-            name.setText(convertedObject.get("fn").toString().replaceAll("^\"|\"$", ""));
-            lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
-            cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
-            address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
-            city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
-            state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
-            email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
-            workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
-            company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
-            workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
-            faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
-            websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
-            realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
-            otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
-            etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
-            categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
-            etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
-            etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
-            region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
-            zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
+            name.setText(convertedObject.get("a").toString().replaceAll("^\"|\"$", ""));
+            lastname.setText(convertedObject.get("b").toString().replaceAll("^\"|\"$", ""));
+            cell.setText(convertedObject.get("c").toString().replaceAll("^\"|\"$", ""));
+            address.setText(convertedObject.get("d").toString().replaceAll("^\"|\"$", ""));
+            city.setText(convertedObject.get("e").toString().replaceAll("^\"|\"$", ""));
+            state.setText(convertedObject.get("f").toString().replaceAll("^\"|\"$", ""));
+            email.setText(convertedObject.get("g").toString().replaceAll("^\"|\"$", ""));
+            workNumber.setText(convertedObject.get("h").toString().replaceAll("^\"|\"$", ""));
+            company.setText(convertedObject.get("i").toString().replaceAll("^\"|\"$", ""));
+            workNumberEnterprise.setText(convertedObject.get("j").toString().replaceAll("^\"|\"$", ""));
+            faxNumber.setText(convertedObject.get("k").toString().replaceAll("^\"|\"$", ""));
+            websiteLink.setText(convertedObject.get("l").toString().replaceAll("^\"|\"$", ""));
+            categoryType.setText(convertedObject.get("m").toString().replaceAll("^\"|\"$", ""));
+            etcontactType.setText(convertedObject.get("n").toString().replaceAll("^\"|\"$", ""));
+            realPhone.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
+            otherInfo.setText(convertedObject.get("p").toString().replaceAll("^\"|\"$", ""));
+            etTitle.setText(convertedObject.get("q").toString().replaceAll("^\"|\"$", ""));
+            etAddress2.setText(convertedObject.get("r").toString().replaceAll("^\"|\"$", ""));
+            zipcode.setText(convertedObject.get("s").toString().replaceAll("^\"|\"$", ""));
+            region.setText(convertedObject.get("t").toString().replaceAll("^\"|\"$", ""));
 
-
-
-
-//            workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
-//            faxNumber = (EditText)findViewById(R.id.etFaxNumber);
-//            websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
-//            realPhone = (EditText)findViewById(R.id.etRealPhone);
-//            otherInfo = (EditText)findViewById(R.id.etOtherInfo);
-//            etcontactType = (EditText)findViewById(R.id.etContactType);
-//            categoryType = (EditText)findViewById(R.id.etCategory);
         }catch (Exception e){
             Log.d(TAG, "Exception in reading "+e.toString());
         }
-//        catch (JSONException err){
-//            Log.d("Error", err.toString());
-//        }
-//        catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
+
     }
 //
     private String validate() {
@@ -688,6 +782,10 @@ public class ReadActivity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(devicePhone.getText().toString().trim())) {
             isValid = "Please enter device phone number";
+            return isValid;
+        }
+        if (TextUtils.isEmpty(deviceOwnerName.getText().toString().trim())) {
+            isValid = "Please enter device owner name";
             return isValid;
         }
         return isValid;

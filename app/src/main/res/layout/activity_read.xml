@@ -64,7 +64,7 @@
             android:textColor="#000000"
             android:paddingLeft="20dp"
             android:layout_marginTop="5dp"
-            android:text="All rights reserved, Copyrighed 2019,2020, BCMC, eTag365, Patent Pending."
+            android:text="All rights reserved, Copyrighted 2019,2020, BCMC, eTag365, Patent Pending."
             android:layout_toRightOf="@+id/imgLogo"
             android:layout_below="@+id/tvVersion"/>
 
@@ -623,7 +623,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="Device Owner Name:"
+                android:text="*Device Owner Name:"
                 android:textColor="#000000"
                 android:textSize="13dp"
                 android:layout_height="match_parent"

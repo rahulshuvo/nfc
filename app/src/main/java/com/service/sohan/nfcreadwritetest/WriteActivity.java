@@ -94,7 +94,7 @@ public class WriteActivity extends AppCompatActivity implements
     ArrayAdapter adapterCat, adapterTyp;
     String stateValue = "";
     int totalThreshold = 0;
-    int finalThreshold = 280; //376 previously, without input tag size is 164, latest 336 now 280
+    int finalThreshold = 303; //376 previously, without input tag size is 164, latest 336 now 280, now 303
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,12 +183,30 @@ public class WriteActivity extends AppCompatActivity implements
                             totalThreshold = name.getText().toString().getBytes().length+lastname.getText().toString().getBytes().length+cell.getText().toString().getBytes().length+address.getText().toString().getBytes().length+city.getText().toString().getBytes().length+stateValue.toString().getBytes().length+email.getText().toString().getBytes().length+workNumber.getText().toString().getBytes().length+company.getText().toString().getBytes().length+workNumberEnterprise.getText().toString().getBytes().length+faxNumber.getText().toString().getBytes().length+websiteLink.getText().toString().getBytes().length+category.toString().getBytes().length+contactType.toString().getBytes().length+realPhone.getText().toString().getBytes().length+otherInfo.getText().toString().getBytes().length+etTitle.getText().toString().getBytes().length+etAddress2.getText().toString().getBytes().length+zipcode.getText().toString().getBytes().length+region.getText().toString().getBytes().length;
                             Log.d(TAG, "Total threshold "+totalThreshold);
                             if(totalThreshold < finalThreshold) {
-                                String messageData = "{\"fn\":" + "\"" + name.getText().toString().trim() + "\"" + ",\"ln\":" + "\"" + lastname.getText().toString() + "\"" + ",\"pn\":" + "\"" + cell.getText().toString() + "\"" + ",\"ad1\":" + "\"" + address.getText().toString() + "\"" + ",\"ct\":" + "\"" + city.getText().toString() + "\"" + ",\"st\":" + "\"" + stateValue + "\"" + ",\"em\":" + "\"" + email.getText().toString() + "\"" + ",\"wn\":" + "\"" + workNumber.getText().toString() + "\"" + ",\"cn\":" + "\"" + company.getText().toString() + "\"" + ",\"wne\":" + "\"" + workNumberEnterprise.getText().toString() + "\"" + ",\"fx\":" + "\"" + faxNumber.getText().toString() + "\"" + ",\"wl\":" + "\"" + websiteLink.getText().toString() + "\"" + ",\"cat\":" + "\"" + category + "\"" + ",\"cty\":" + "\"" + contactType + "\"" + ",\"rp\":" + "\"" + realPhone.getText().toString() + "\"" + ",\"o\":" + "\"" + otherInfo.getText().toString() + "\"" + ",\"tl\":" + "\"" + etTitle.getText().toString() + "\"" + ",\"ad2\":" + "\"" + etAddress2.getText().toString() + "\"" + ",\"z\":" + "\"" + zipcode.getText().toString() + "\"" + ",\"rg\":" + "\"" + region.getText().toString() + "\"" + "}";
-                                String withoutInput = "{\"fn\":" + "\"" + "\"" + ",\"ln\":" + "\"" + "\"" + ",\"pn\":" + "\"" +  "\"" + ",\"ad1\":" + "\"" +  "\"" + ",\"ct\":" + "\"" +  "\"" + ",\"st\":" + "\"" +  "\"" + ",\"em\":" + "\"" +  "\"" + ",\"wn\":" + "\"" +  "\"" + ",\"cn\":" + "\"" +  "\"" + ",\"wne\":" + "\"" + "\"" + ",\"fx\":" + "\"" +  "\"" + ",\"wl\":" + "\"" + "\"" + ",\"cat\":" + "\"" + "\"" + ",\"cty\":" + "\"" + "\"" + ",\"rp\":" + "\"" + "\"" + ",\"o\":" + "\"" + "\"" + ",\"tl\":" + "\"" + "\"" + ",\"ad2\":" + "\"" + "\"" + ",\"z\":" + "\"" + "\"" + ",\"rg\":" + "\"" + "\"" + "}";
-                                Log.d(TAG, "Without input length "+withoutInput.getBytes().length);
-                                Log.d(TAG, "full message length "+messageData.getBytes().length);
-                                Log.d(TAG, "message gata "+messageData);
+                               //String messageData = "{\"fn\":" + "\"" + name.getText().toString().trim() + "\"" + ",\"ln\":" + "\"" + lastname.getText().toString() + "\"" + ",\"pn\":" + "\"" + cell.getText().toString() + "\"" + ",\"ad1\":" + "\"" + address.getText().toString() + "\"" + ",\"ct\":" + "\"" + city.getText().toString() + "\"" + ",\"st\":" + "\"" + stateValue + "\"" + ",\"em\":" + "\"" + email.getText().toString() + "\"" + ",\"wn\":" + "\"" + workNumber.getText().toString() + "\"" + ",\"cn\":" + "\"" + company.getText().toString() + "\"" + ",\"wne\":" + "\"" + workNumberEnterprise.getText().toString() + "\"" + ",\"fx\":" + "\"" + faxNumber.getText().toString() + "\"" + ",\"wl\":" + "\"" + websiteLink.getText().toString() + "\"" + ",\"cat\":" + "\"" + category + "\"" + ",\"cty\":" + "\"" + contactType + "\"" + ",\"rp\":" + "\"" + realPhone.getText().toString() + "\"" + ",\"o\":" + "\"" + otherInfo.getText().toString() + "\"" + ",\"tl\":" + "\"" + etTitle.getText().toString() + "\"" + ",\"ad2\":" + "\"" + etAddress2.getText().toString() + "\"" + ",\"z\":" + "\"" + zipcode.getText().toString() + "\"" + ",\"rg\":" + "\"" + region.getText().toString() + "\"" + "}";
+                               String messageData = "{\"a\":" + "\"" + name.getText().toString().trim() + "\"" + ",\"b\":" + "\"" + lastname.getText().toString() + "\"" + ",\"c\":" + "\"" + cell.getText().toString() + "\"" + ",\"d\":" + "\"" + address.getText().toString() + "\"" + ",\"e\":" + "\"" + city.getText().toString() + "\"" + ",\"f\":" + "\"" + stateValue + "\"" + ",\"g\":" + "\"" + email.getText().toString() + "\"" + ",\"h\":" + "\"" + workNumber.getText().toString() + "\"" + ",\"i\":" + "\"" + company.getText().toString() + "\"" + ",\"j\":" + "\"" + workNumberEnterprise.getText().toString() + "\"" + ",\"k\":" + "\"" + faxNumber.getText().toString() + "\"" + ",\"l\":" + "\"" + websiteLink.getText().toString() + "\"" + ",\"m\":" + "\"" + category + "\"" + ",\"n\":" + "\"" + contactType + "\"" + ",\"o\":" + "\"" + realPhone.getText().toString() + "\"" + ",\"p\":" + "\"" + otherInfo.getText().toString() + "\"" + ",\"q\":" + "\"" + etTitle.getText().toString() + "\"" + ",\"r\":" + "\"" + etAddress2.getText().toString() + "\"" + ",\"s\":" + "\"" + zipcode.getText().toString() + "\"" + ",\"t\":" + "\"" + region.getText().toString() + "\"" + "}";
+
+                               //String messageData = "{\"fn\":" + "\"" + name + "\"" + ",\"ln\":" + "\"" + lastName + "\"" + ",\"pn\":" + "\"" + cell + "\"" + ",\"ad1\":" + "\"" + address1 + "\"" + ",\"ct\":" + "\"" + city + ",\"st\":" + "\"" + state + ",\"em\":" + "\"" + email + ",\"wn\":" + "\"" + workNumber + ",\"cn\":\(company),\"wne\":\(workNumberExt),\"fx\":\(fax),\"wl\":\(website),\"cat\":\(categoryType),\"cty\":\(contactType),\"rp\":\(refPhone),\"o\":\(otherInf),\"tl\":\(title),\"ad2\":\(address2),\"z\":\(zip),\"rg\":\(region)}"
+                               String test =  "{\"fn\":" + "\"" + name + "\"" + "}";
+                              // String withoutInputOld = "{\"fn\":" + "\"" + "\"" + ",\"ln\":" + "\"" + "\"" + ",\"pn\":" + "\"" +  "\"" + ",\"ad1\":" + "\"" +  "\"" + ",\"ct\":" + "\"" +  "\"" + ",\"st\":" + "\"" +  "\"" + ",\"em\":" + "\"" +  "\"" + ",\"wn\":" + "\"" +  "\"" + ",\"cn\":" + "\"" +  "\"" + ",\"wne\":" + "\"" + "\"" + ",\"fx\":" + "\"" +  "\"" + ",\"wl\":" + "\"" + "\"" + ",\"cat\":" + "\"" + "\"" + ",\"cty\":" + "\"" + "\"" + ",\"rp\":" + "\"" + "\"" + ",\"o\":" + "\"" + "\"" + ",\"tl\":" + "\"" + "\"" + ",\"ad2\":" + "\"" + "\"" + ",\"z\":" + "\"" + "\"" + ",\"rg\":" + "\"" + "\"" + "}";
+                              // String withoutInputNew = "{\"a\":" + "\"" + "\"" + ",\"b\":" + "\"" + "\"" + ",\"c\":" + "\"" +  "\"" + ",\"d\":" + "\"" +  "\"" + ",\"e\":" + "\"" +  "\"" + ",\"f\":" + "\"" +  "\"" + ",\"g\":" + "\"" +  "\"" + ",\"h\":" + "\"" +  "\"" + ",\"i\":" + "\"" +  "\"" + ",\"j\":" + "\"" + "\"" + ",\"k\":" + "\"" +  "\"" + ",\"l\":" + "\"" + "\"" + ",\"m\":" + "\"" + "\"" + ",\"n\":" + "\"" + "\"" + ",\"o\":" + "\"" + "\"" + ",\"p\":" + "\"" + "\"" + ",\"q\":" + "\"" + "\"" + ",\"r\":" + "\"" + "\"" + ",\"s\":" + "\"" + "\"" + ",\"t\":" + "\"" + "\"" + "}";
+//
+//                                String testMessage = "{\"fn\":\"nTunvir Rahman test ios write 2\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
+                                //Log.d(TAG, "Without input length old "+withoutInputOld.getBytes().length);
+                                //Log.d(TAG, "Without input length new "+withoutInputNew.getBytes().length);
+//                                Log.d(TAG, "full message length "+messageData.getBytes().length);
+//                                Log.d(TAG, "message gata "+messageData);
+
                                 write(messageData, myTag);
+
+
+                                //String testMessage = "{\"fn\":\"nTunvir Rahman test ios write 2\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
+                                //String testMessage = "{\"fn\":\"nTunvir Rahman ios\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
+//                                Log.d(TAG, "Without input length "+testMessage.getBytes().length);
+//                                Log.d(TAG, "full message length "+testMessage.getBytes().length);
+//                                Log.d(TAG, "message gata "+testMessage);
+//                                write(testMessage, myTag);
+
                                 Toast.makeText(context, WRITE_SUCCESS, Toast.LENGTH_LONG).show();
                                 postWriterData();
                                 //Toast.makeText(context, "All ok", Toast.LENGTH_LONG).show();
@@ -201,7 +219,7 @@ public class WriteActivity extends AppCompatActivity implements
                                     }
                                 });
                                 ad.setTitle("Error");
-                                ad.setMessage("Cannot write more than 280 bytes, please reduce some data");
+                                ad.setMessage("Cannot write more than 303 bytes, please reduce some data");
                                 ad.show();
                             }
                         }
@@ -209,26 +227,10 @@ public class WriteActivity extends AppCompatActivity implements
                     catch (Exception e){
 
                     }
-//                    catch (IOException e) {
-//                        Toast.makeText(context, WRITE_ERROR, Toast.LENGTH_LONG ).show();
-//                        e.printStackTrace();
-//                    } catch (FormatException e) {
-//                        Toast.makeText(context, WRITE_ERROR, Toast.LENGTH_LONG ).show();
-//                        e.printStackTrace();
-//                    }
                 }else{
                     Toast.makeText(getApplicationContext(), validate(), Toast.LENGTH_LONG).show();
                 }
 
-//                if(validate()==null){
-//                    Toast.makeText(getApplicationContext(), "All Ok", Toast.LENGTH_LONG).show();
-//                }else{
-//                    Toast.makeText(getApplicationContext(), validate(), Toast.LENGTH_LONG).show();
-//                }
-                //------------------------------------------------
-
-                //postWriterData();
-                //saveContacts();
             }
         });
 
@@ -1041,6 +1043,7 @@ public class WriteActivity extends AppCompatActivity implements
 //     ******************************************************************************/
 
     private void write(String text, Tag tag) throws IOException, FormatException {
+
         NdefRecord[] records = { createRecord(text) };
         NdefMessage message = new NdefMessage(records);
         // Get an instance of Ndef for the tag.
