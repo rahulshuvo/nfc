@@ -7,8 +7,8 @@ android {
         applicationId "com.service.sohan.nfcreadwritetest"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 10
-        versionName "3.0.7"
+        versionCode 11
+        versionName "3.0.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

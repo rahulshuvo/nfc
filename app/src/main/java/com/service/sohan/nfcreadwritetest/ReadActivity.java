@@ -31,10 +31,16 @@ import android.text.TextUtils;
 import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +50,11 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.service.sohan.nfcreadwritetest.Api.ApiInterface;
 import com.service.sohan.nfcreadwritetest.Api.ApiUtils;
+import com.service.sohan.nfcreadwritetest.Model.CategoryResponse;
+import com.service.sohan.nfcreadwritetest.Model.ContactTypeResponse;
 import com.service.sohan.nfcreadwritetest.Model.ProfileResponse;
 import com.service.sohan.nfcreadwritetest.Model.ReaderDataPostedResponse;
+import com.service.sohan.nfcreadwritetest.Model.StateResponse;
 import com.service.sohan.nfcreadwritetest.Model.WriterPostedResponse;
 
 import org.json.JSONException;
@@ -70,7 +79,8 @@ import io.reactivex.schedulers.Schedulers;
 import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class ReadActivity extends AppCompatActivity {
+public class ReadActivity extends AppCompatActivity implements
+        AdapterView.OnItemSelectedListener{
     private final String TAG = "nfc_"+this.getClass().getSimpleName();
     //String TAG = "PhoneActivityTAGReader";
     Activity activity = ReadActivity.this;
@@ -83,7 +93,7 @@ public class ReadActivity extends AppCompatActivity {
     Tag myTag;
     NfcAdapter nfcAdapter;
     Button btnExit, btnWrite, btnClear;
-    EditText name, cell, lastname, address, city, state, email, workNumber, company, devicePhone, deviceOwnerName, workNumberEnterprise, faxNumber, websiteLink, realPhone, otherInfo, etcontactType, categoryType, etTitle, etAddress2, region, zipcode;
+    EditText name, cell, lastname, address, city, state, email, workNumber, company, devicePhone, deviceOwnerName, workNumberEnterprise, faxNumber, websiteLink, realPhone, otherInfo, etcontactType, categoryType, etTitle, etAddress2, region, zipcode, memo;
     boolean contactListSelected = false;
     boolean webSelected = false;
     private CompositeDisposable mCompositeDisposable;
@@ -91,6 +101,18 @@ public class ReadActivity extends AppCompatActivity {
     ProgressDialog dialog;
     String phoneNumber, sharedValue;
     ImageView logo;
+    AutoCompleteTextView comClient;
+    ArrayAdapter<String> sourceAdapter;
+    String companyCode, category, contactType;
+    LinearLayout llMain;
+    List<StateResponse.Data> stateList;
+    List<ContactTypeResponse.Data> contactTypeList;
+    List<CategoryResponse.Data> categoryList;
+    //    List<String> categoryList;
+//    List<String> typeList;
+    Spinner spinCat, spinTyp;
+    ArrayAdapter adapterCat, adapterTyp;
+    String stateValue = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +123,10 @@ public class ReadActivity extends AppCompatActivity {
         String versionName = BuildConfig.VERSION_NAME;
         tvVersion.setText("Version: "+versionName);
 
+        llMain = (LinearLayout)findViewById(R.id.llMain);
+        stateList = new ArrayList<>();
+        categoryList = new ArrayList<>();
+        contactTypeList = new ArrayList<>();
         readFromIntent(getIntent());
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (nfcAdapter == null) {
@@ -179,6 +205,56 @@ public class ReadActivity extends AppCompatActivity {
 //            }
 //        });
 
+        spinCat = (Spinner)findViewById(R.id.spinCategory);
+        spinCat.setOnItemSelectedListener(this);
+        adapterCat = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+        adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterCat.add("Select Category");
+        adapterCat.addAll(categoryList);
+        spinCat.setAdapter(adapterCat);
+
+        spinTyp = (Spinner)findViewById(R.id.spinContactType);
+        spinTyp.setOnItemSelectedListener(this);
+        adapterTyp = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+        adapterTyp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterTyp.add("Select Contact Type");
+        adapterTyp.addAll(contactTypeList);
+        spinTyp.setAdapter(adapterTyp);
+
+//        comClient = (AutoCompleteTextView)findViewById(R.id.comSymbol);
+//        comClient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                if (comClient.getText().length() > 0) {
+//
+//                    InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(llMain.getWindowToken(), 0);
+//
+//                    //Toast.makeText(getApplicationContext(), "selected "+comClient.getText().toString(), Toast.LENGTH_LONG).show();
+////                    String b4companyCode = comClient.getText().toString();
+////                    String[] parts = b4companyCode.split("-");
+////                    String code = parts[0]; // 004
+////                    companyCode = code;
+//
+//                    String Code = comClient.getText().toString();
+//                    companyCode = Code;
+//                    int index = getIndex(companyCode);
+//                    stateValue = stateList.get(index).getState();
+//                    //Toast.makeText(getApplicationContext(), "selected state "+stateValue, Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Please select a company", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+//        sourceAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
+//
+//        comClient.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                comClient.showDropDown();
+//            }
+//        });
+
         address = (EditText)findViewById(R.id.etAddress);
         city = (EditText)findViewById(R.id.etCity);
         state = (EditText)findViewById(R.id.etState);
@@ -192,12 +268,13 @@ public class ReadActivity extends AppCompatActivity {
         websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
         realPhone = (EditText)findViewById(R.id.etRealPhone);
         otherInfo = (EditText)findViewById(R.id.etOtherInfo);
-        etcontactType = (EditText)findViewById(R.id.etContactType);
-        categoryType = (EditText)findViewById(R.id.etCategory);
+        //etcontactType = (EditText)findViewById(R.id.etContactType);
+        //categoryType = (EditText)findViewById(R.id.etCategory);
         etTitle = (EditText)findViewById(R.id.etTitle);
         region = (EditText)findViewById(R.id.etRegion);
         zipcode = (EditText)findViewById(R.id.etZipCode);
         etAddress2 = (EditText)findViewById(R.id.etAddress2);
+        memo = (EditText)findViewById(R.id.etMemo);
 
         mCompositeDisposable = new CompositeDisposable();
         apiInterface = ApiUtils.getService();
@@ -247,6 +324,7 @@ public class ReadActivity extends AppCompatActivity {
             phoneNumber = "";
             devicePhone.setText("");
         }
+        getContactType();
         //testRead();
     }
 
@@ -301,6 +379,17 @@ public class ReadActivity extends AppCompatActivity {
         return _lst;
     }
 
+//    public int getIndex(String stateName){
+//        int index = 0;
+//        for(int i=0; i<stateList.size(); i++){
+//            if(stateList.get(i).getSTATENAME().equals(stateName)){
+//                index = i;
+//                break;
+//            }
+//        }
+//        return index;
+//    }
+
     private void requestPermission(String permission){
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)){
             Toast.makeText(activity, "Phone state permission allows us to get phone number. Please allow it for additional functionality.", Toast.LENGTH_LONG).show();
@@ -340,7 +429,7 @@ public class ReadActivity extends AppCompatActivity {
         if(isNetworkAvailable()){
             dialog = ProgressDialog.show(ReadActivity.this, "", "Data Posting. Please wait.....", true);
             //String Data = "Firstname:Sohan|Lastname:Azad|Companyname:BeRich|Phone:8801819123123|Email:muhitunazad@gmail.com";
-            String Data = "FirstName:"+name.getText().toString()+"|LastName:"+lastname.getText().toString()+"|CompanyName:"+company.getText().toString()+"|Phone:"+cell.getText().toString()+"|Email:"+email.getText().toString()+"|Address:"+address.getText().toString()+"|City:"+city.getText().toString()+"|State:"+state.getText().toString()+"|WorkPhoneExt:"+workNumberEnterprise.getText().toString()+"|Fax:"+faxNumber.getText().toString()+"|Website:"+websiteLink.getText().toString()+"|Category:"+categoryType.getText().toString()+"|TypeOfContact:"+etcontactType.getText().toString()+"|RefPhone:"+realPhone.getText().toString()+"|Other:"+otherInfo.getText().toString()+"|WorkPhone:"+workNumber.getText().toString()+"|Title:"+etTitle.getText().toString()+"|Address1:"+etAddress2.getText().toString()+"|Region:"+region.getText().toString()+"|Zip:"+zipcode.getText().toString();
+            String Data = "FirstName:"+name.getText().toString()+"|LastName:"+lastname.getText().toString()+"|CompanyName:"+company.getText().toString()+"|Phone:"+cell.getText().toString()+"|Email:"+email.getText().toString()+"|Address:"+address.getText().toString()+"|City:"+city.getText().toString()+"|State:"+state.getText().toString()+"|WorkPhoneExt:"+workNumberEnterprise.getText().toString()+"|Fax:"+faxNumber.getText().toString()+"|Website:"+websiteLink.getText().toString()+"|Category:"+category+"|TypeOfContact:"+contactType+"|RefPhone:"+realPhone.getText().toString()+"|Other:"+otherInfo.getText().toString()+"|WorkPhone:"+workNumber.getText().toString()+"|Title:"+etTitle.getText().toString()+"|Address1:"+etAddress2.getText().toString()+"|Region:"+region.getText().toString()+"|Zip:"+zipcode.getText().toString()+"|memo:"+memo.getText().toString();
             Log.d(TAG, "shared:"+sharedValue+" name:"+deviceOwnerName.getText().toString()+" fp:"+devicePhone.getText().toString()+" tp:"+cell.getText().toString()+" Data:"+Data);
             mCompositeDisposable.add(apiInterface.postReaderData(sharedValue, deviceOwnerName.getText().toString(), devicePhone.getText().toString(), cell.getText().toString(), Data) // while release give user id
                     .subscribeOn(Schedulers.io())
@@ -421,6 +510,152 @@ public class ReadActivity extends AppCompatActivity {
         ad.setMessage(error+"");
         ad.show();
         //Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+    }
+
+    public void getContactType(){
+
+        if(isNetworkAvailable()){
+            dialog = ProgressDialog.show(ReadActivity.this, "", "Data loading. Please wait.....", true);
+            mCompositeDisposable.add(apiInterface.getContactType() //userData.getUserDataModel().getEmName()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::handleResponsesContact, this::handleErrorsContact));
+        }else{
+            AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
+            ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    getContactType();
+                }
+            });
+            ad.setMessage("Please check your internet connection and try again");
+            ad.show();
+        }
+    }
+
+
+    private void handleResponsesContact(ContactTypeResponse clientResponse) {
+        dialog.dismiss();
+
+        Log.d(TAG, "Response of product purchase view api "+clientResponse);
+
+        if(clientResponse.getStatus()){
+            Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
+            contactTypeList.clear();
+            contactTypeList.addAll(clientResponse.getData());
+            adapterTyp = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+            adapterTyp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapterTyp.add("Select Contact Type");
+            adapterTyp.addAll(contactTypeList);
+            spinTyp.setAdapter(adapterTyp);
+            getCategory();
+        }else{
+            //recyclerView.setAdapter(null);
+            //Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
+            AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
+            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // loadInvestorInfo();
+                    getContactType();
+                }
+            });
+            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //finish();
+                }
+            });
+            ad.setMessage("You are not allowed");
+            ad.setCancelable(false);
+            ad.show();
+        }
+
+    }
+
+    private void handleErrorsContact(Throwable error) {
+        dialog.dismiss();
+        Log.d(TAG, "Error "+error);
+        Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void getCategory(){
+
+        if(isNetworkAvailable()){
+            dialog = ProgressDialog.show(ReadActivity.this, "", "Data loading. Please wait.....", true);
+            mCompositeDisposable.add(apiInterface.getCategoryType() //userData.getUserDataModel().getEmName()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::handleResponsesCategory, this::handleErrorsCategory));
+        }else{
+            AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
+            ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    getCategory();
+                }
+            });
+            ad.setMessage("Please check your internet connection and try again");
+            ad.show();
+        }
+    }
+
+
+    private void handleResponsesCategory(CategoryResponse clientResponse) {
+        dialog.dismiss();
+
+        Log.d(TAG, "Response of product purchase view api "+clientResponse);
+
+        if(clientResponse.getStatus()){
+            Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
+            categoryList.clear();
+            categoryList.addAll(clientResponse.getData());
+            adapterCat = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
+            adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapterCat.add("Select Category");
+            adapterCat.addAll(categoryList);
+            spinCat.setAdapter(adapterCat);
+        }else{
+            //recyclerView.setAdapter(null);
+            //Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
+            AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
+            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // loadInvestorInfo();
+                    getContactType();
+                }
+            });
+            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //finish();
+                }
+            });
+            ad.setMessage("You are not allowed");
+            ad.setCancelable(false);
+            ad.show();
+        }
+
+    }
+
+    private void handleErrorsCategory(Throwable error) {
+        dialog.dismiss();
+        Log.d(TAG, "Error "+error);
+        Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
     }
 
     public void getUser(){
@@ -714,8 +949,8 @@ public class ReadActivity extends AppCompatActivity {
             workNumberEnterprise.setText(convertedObject.get("j").toString().replaceAll("^\"|\"$", ""));
             faxNumber.setText(convertedObject.get("k").toString().replaceAll("^\"|\"$", ""));
             websiteLink.setText(convertedObject.get("l").toString().replaceAll("^\"|\"$", ""));
-            categoryType.setText(convertedObject.get("m").toString().replaceAll("^\"|\"$", ""));
-            etcontactType.setText(convertedObject.get("n").toString().replaceAll("^\"|\"$", ""));
+//            categoryType.setText(convertedObject.get("m").toString().replaceAll("^\"|\"$", ""));
+//            etcontactType.setText(convertedObject.get("n").toString().replaceAll("^\"|\"$", ""));
             realPhone.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
             otherInfo.setText(convertedObject.get("p").toString().replaceAll("^\"|\"$", ""));
             etTitle.setText(convertedObject.get("q").toString().replaceAll("^\"|\"$", ""));
@@ -727,6 +962,35 @@ public class ReadActivity extends AppCompatActivity {
             Log.d(TAG, "Exception in reading "+e.toString());
         }
 
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        switch (parent.getId()) {
+            case R.id.spinCategory:
+                if(pos==0){
+                    category = "";
+                }else {
+                    category = categoryList.get(pos-1).getDescription();
+                }
+                //Toast.makeText(getApplicationContext(), category, Toast.LENGTH_LONG).show();
+                break;
+            case R.id.spinContactType:
+                if(pos==0){
+                    contactType = "";
+                }else {
+                    contactType = contactTypeList.get(pos-1).getDescription();
+                }
+                //Toast.makeText(getApplicationContext(), contactType, Toast.LENGTH_LONG).show();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 //
     private String validate() {

@@ -1,4 +1,4 @@
-#Thu Jul 02 23:41:13 BDT 2020
+#Mon Jul 13 10:50:56 BDT 2020
 base.0=/Users/ctgshop/NFCREADWRITETEST/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
