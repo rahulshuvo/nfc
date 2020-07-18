@@ -212,7 +212,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*Address1:"
+                android:text="Address1:"
                 android:textColor="#000000"
                 android:textSize="13dp"
                 android:layout_height="wrap_content"
@@ -264,7 +264,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*City:"
+                android:text="City:"
                 android:textColor="#000000"
                 android:textSize="13dp"
                 android:layout_height="wrap_content"
@@ -316,7 +316,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*State:"
+                android:text="State:"
                 android:textColor="#000000"
                 android:textSize="13dp"
                 android:layout_height="wrap_content"
@@ -377,7 +377,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*ZipCode:"
+                android:text="ZipCode:"
                 android:textColor="#000000"
                 android:textSize="13dp"
                 android:layout_height="wrap_content"
@@ -753,7 +753,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*Device Owner Name:"
+                android:text="Device Owner Name:"
                 android:textColor="#000000"
                 android:textSize="13dp"
                 android:layout_height="match_parent"

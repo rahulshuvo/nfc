@@ -158,20 +158,21 @@ public class ReadActivity extends AppCompatActivity implements
                 if(validate()==null){
                     if(contactListSelected && webSelected){
                         sharedValue = "0";
-                        postReaderData(sharedValue);
+                        //postReaderData(sharedValue);
                     }
                     else if (webSelected) {
                         sharedValue = "1";
-                        postReaderData(sharedValue);
+                        //postReaderData(sharedValue);
                         //Toast.makeText(getApplicationContext(), "Web called", Toast.LENGTH_LONG).show();
                     } else if (contactListSelected) {
                         //Toast.makeText(getApplicationContext(), "Contacts called", Toast.LENGTH_LONG).show();
                         saveContacts();
                         sharedValue = "0";
-                        postReaderData(sharedValue);
+                        //postReaderData(sharedValue);
                     } else {
                         sharedValue = "0";
-                        postReaderData(sharedValue);
+                        //postReaderData(sharedValue);
+
 //                        AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
 //                        ad.setCancelable(false);
 //                        ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
@@ -998,14 +999,16 @@ public class ReadActivity extends AppCompatActivity implements
 
         String isValid = null;
 //
-        if (TextUtils.isEmpty(name.getText().toString().trim())) {
-            isValid = "Please enter first name";
-            return isValid;
-        }
+
         if (TextUtils.isEmpty(cell.getText().toString().trim())) {
             isValid = "Please enter cell number";
             return isValid;
         }
+        if (TextUtils.isEmpty(name.getText().toString().trim())) {
+            isValid = "Please enter first name";
+            return isValid;
+        }
+
         if (TextUtils.isEmpty(lastname.getText().toString().trim())) {
             isValid = "Please enter last name";
             return isValid;
@@ -1048,10 +1051,10 @@ public class ReadActivity extends AppCompatActivity implements
             isValid = "Please enter device phone number";
             return isValid;
         }
-        if (TextUtils.isEmpty(deviceOwnerName.getText().toString().trim())) {
-            isValid = "Please enter device owner name";
-            return isValid;
-        }
+//        if (TextUtils.isEmpty(deviceOwnerName.getText().toString().trim())) {
+//            isValid = "Please enter device owner name";
+//            return isValid;
+//        }
         return isValid;
     }
 //
