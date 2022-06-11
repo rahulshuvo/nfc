@@ -1,4 +1,4 @@
-#Fri Jul 17 19:26:49 BDT 2020
-base.0=/Users/ctgshop/NFCREADWRITETEST/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
+#Wed Jun 08 00:06:46 BDT 2022
+base.0=C\:\\code\\nfc\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
+path.0=classes.dex

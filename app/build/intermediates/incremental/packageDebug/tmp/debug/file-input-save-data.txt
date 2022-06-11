@@ -1,7 +1,0 @@
-#Internal package file, do not edit.
-#Fri Jun 19 21:39:28 BDT 2020
-0.baseType=DIRECTORY
-0.base=/Users/ctgshop/NFCREADWRITETEST/app/build/intermediates/transforms/dexMerger/debug/0
-0.path=classes.dex
-0.set=DEX
-count=1

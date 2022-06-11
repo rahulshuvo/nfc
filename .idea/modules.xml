@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/NFCREADWRITETEST.iml" filepath="$PROJECT_DIR$/NFCREADWRITETEST.iml" group="NFCREADWRITETEST" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="NFCREADWRITETEST/app" />
-    </modules>
-  </component>
-</project>

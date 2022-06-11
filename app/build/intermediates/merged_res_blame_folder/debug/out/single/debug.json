@@ -1,0 +1,222 @@
+[
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_logo.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_launcher_icon_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxhdpi\\launcher_icon_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_launcher_icon.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-anydpi-v26\\launcher_icon.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_launcher_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\launcher_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_border.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\drawable-v24\\border.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_logo.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_launcher_icon_new.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_icon_new.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_launcher_icon_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_launcher_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_launcher_icon_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-hdpi\\launcher_icon_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_launcher_icon_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_icon_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_launcher_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_writer_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\writer_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_write.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\layout\\activity_write.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_launcher_icon_new.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxhdpi\\launcher_icon_new.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_launcher_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-hdpi\\launcher_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_read.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\layout\\activity_read.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_logo.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-hdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_reader_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\reader_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\xml_nfc_tech_filter.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\xml\\nfc_tech_filter.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable_drop_down.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\drawable\\drop_down.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_logo.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-anydpi-v26\\logo.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_launcher_icon_round.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\launcher_icon_round.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_launcher_icon_new.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon_new.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_launcher_icon_new.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxxhdpi\\launcher_icon_new.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_launcher_icon_round.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-anydpi-v26\\launcher_icon_round.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_logo.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xhdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable_logos.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\drawable\\logos.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\code\\nfc\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_web_view.xml.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\layout\\activity_web_view.xml"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_launcher_icon_new.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-hdpi\\launcher_icon_new.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_launcher_icon.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-xxhdpi\\launcher_icon.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_logo.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\mipmap-mdpi\\logo.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\drawable\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\code\\nfc\\app\\build\\intermediates\\merged_res\\debug\\drawable-v24_ic_launcher.png.flat",
+        "source": "C:\\code\\nfc\\app\\src\\main\\res\\drawable-v24\\ic_launcher.png"
+    }
+]
