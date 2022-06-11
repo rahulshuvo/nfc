@@ -5,8 +5,9 @@
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/8f6dfac25fe418f7bc46edb3ce321408/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cd4f47e3bbcad22e187036385372947b/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fc1a925c99a1526cbf79d9ba953f2861/transformed/cursoradapter-28.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fc1a925c99a1526cbf79d9ba953f2861/transformed/cursoradapter-28.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fc1a925c99a1526cbf79d9ba953f2861/transformed/cursoradapter-28.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d3642b5022a0dbc0ef3e0298260601fd/transformed/cursoradapter-28.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d3642b5022a0dbc0ef3e0298260601fd/transformed/cursoradapter-28.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d3642b5022a0dbc0ef3e0298260601fd/transformed/cursoradapter-28.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

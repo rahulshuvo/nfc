@@ -4,9 +4,10 @@
       <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/50af47f323741f75cba3ad918d188c8e/res" />
       <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-2/files-2.1/50af47f323741f75cba3ad918d188c8e/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bf7ea21c058f2fafb57de9682f8553aa/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/04a9cdd83063c327db2705114b722f8b/transformed/livedata-core-1.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/04a9cdd83063c327db2705114b722f8b/transformed/livedata-core-1.1.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/04a9cdd83063c327db2705114b722f8b/transformed/livedata-core-1.1.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ac97d792d8facf5ba84e5095d2b5730f/transformed/livedata-core-1.1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ac97d792d8facf5ba84e5095d2b5730f/transformed/livedata-core-1.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ac97d792d8facf5ba84e5095d2b5730f/transformed/livedata-core-1.1.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
