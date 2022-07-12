@@ -45,71 +45,70 @@
 26-->C:\code\nfc\app\src\main\AndroidManifest.xml:18:9-54
 27        android:supportsRtl="true"
 27-->C:\code\nfc\app\src\main\AndroidManifest.xml:19:9-35
-28        android:testOnly="true"
-29        android:theme="@style/AppTheme"
-29-->C:\code\nfc\app\src\main\AndroidManifest.xml:20:9-40
-30        android:usesCleartextTraffic="true" >
-30-->C:\code\nfc\app\src\main\AndroidManifest.xml:21:9-44
-31        <activity android:name="com.service.sohan.nfcreadwritetest.WebViewActivity" />
-31-->C:\code\nfc\app\src\main\AndroidManifest.xml:22:9-62
-31-->C:\code\nfc\app\src\main\AndroidManifest.xml:22:19-50
-32
-33        <meta-data
-33-->C:\code\nfc\app\src\main\AndroidManifest.xml:23:9-25:55
-34            android:name="android.nfc.action.TECH_DISCOVERED"
-34-->C:\code\nfc\app\src\main\AndroidManifest.xml:24:13-62
-35            android:resource="@xml/nfc_tech_filter" />
-35-->C:\code\nfc\app\src\main\AndroidManifest.xml:25:13-52
-36
-37        <activity android:name="com.service.sohan.nfcreadwritetest.MainActivity" >
-37-->C:\code\nfc\app\src\main\AndroidManifest.xml:26:9-32:20
-37-->C:\code\nfc\app\src\main\AndroidManifest.xml:26:19-47
-38            <intent-filter>
-38-->C:\code\nfc\app\src\main\AndroidManifest.xml:27:13-31:29
-39                <action android:name="android.intent.action.MAIN" />
-39-->C:\code\nfc\app\src\main\AndroidManifest.xml:28:17-69
-39-->C:\code\nfc\app\src\main\AndroidManifest.xml:28:25-66
-40
-41                <category android:name="android.intent.category.LAUNCHER" />
-41-->C:\code\nfc\app\src\main\AndroidManifest.xml:29:17-77
-41-->C:\code\nfc\app\src\main\AndroidManifest.xml:29:27-74
-42            </intent-filter>
-43        </activity>
-44        <activity
-44-->C:\code\nfc\app\src\main\AndroidManifest.xml:33:9-44:20
-45            android:name="com.service.sohan.nfcreadwritetest.ReadActivity"
-45-->C:\code\nfc\app\src\main\AndroidManifest.xml:34:13-41
-46            android:windowSoftInputMode="stateHidden" >
-46-->C:\code\nfc\app\src\main\AndroidManifest.xml:35:13-54
-47            <intent-filter>
-47-->C:\code\nfc\app\src\main\AndroidManifest.xml:36:13-42:29
-48                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
-48-->C:\code\nfc\app\src\main\AndroidManifest.xml:37:17-77
-48-->C:\code\nfc\app\src\main\AndroidManifest.xml:37:25-74
-49
-50                <category android:name="android.intent.category.DEFAULT" />
-50-->C:\code\nfc\app\src\main\AndroidManifest.xml:39:17-76
-50-->C:\code\nfc\app\src\main\AndroidManifest.xml:39:27-73
-51
-52                <data android:mimeType="text/plain" />
-52-->C:\code\nfc\app\src\main\AndroidManifest.xml:41:17-55
-52-->C:\code\nfc\app\src\main\AndroidManifest.xml:41:23-52
-53            </intent-filter>
-54        </activity>
-55        <activity android:name="com.service.sohan.nfcreadwritetest.WriteActivity" >
-55-->C:\code\nfc\app\src\main\AndroidManifest.xml:45:9-53:20
-55-->C:\code\nfc\app\src\main\AndroidManifest.xml:45:19-48
-56
-57            <!-- <intent-filter> -->
-58            <!-- <action android:name="android.nfc.action.NDEF_DISCOVERED" /> -->
+28        android:theme="@style/AppTheme"
+28-->C:\code\nfc\app\src\main\AndroidManifest.xml:20:9-40
+29        android:usesCleartextTraffic="true" >
+29-->C:\code\nfc\app\src\main\AndroidManifest.xml:21:9-44
+30        <activity android:name="com.service.sohan.nfcreadwritetest.WebViewActivity" />
+30-->C:\code\nfc\app\src\main\AndroidManifest.xml:22:9-62
+30-->C:\code\nfc\app\src\main\AndroidManifest.xml:22:19-50
+31
+32        <meta-data
+32-->C:\code\nfc\app\src\main\AndroidManifest.xml:23:9-25:55
+33            android:name="android.nfc.action.TECH_DISCOVERED"
+33-->C:\code\nfc\app\src\main\AndroidManifest.xml:24:13-62
+34            android:resource="@xml/nfc_tech_filter" />
+34-->C:\code\nfc\app\src\main\AndroidManifest.xml:25:13-52
+35
+36        <activity android:name="com.service.sohan.nfcreadwritetest.MainActivity" >
+36-->C:\code\nfc\app\src\main\AndroidManifest.xml:26:9-32:20
+36-->C:\code\nfc\app\src\main\AndroidManifest.xml:26:19-47
+37            <intent-filter>
+37-->C:\code\nfc\app\src\main\AndroidManifest.xml:27:13-31:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->C:\code\nfc\app\src\main\AndroidManifest.xml:28:17-69
+38-->C:\code\nfc\app\src\main\AndroidManifest.xml:28:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->C:\code\nfc\app\src\main\AndroidManifest.xml:29:17-77
+40-->C:\code\nfc\app\src\main\AndroidManifest.xml:29:27-74
+41            </intent-filter>
+42        </activity>
+43        <activity
+43-->C:\code\nfc\app\src\main\AndroidManifest.xml:33:9-44:20
+44            android:name="com.service.sohan.nfcreadwritetest.ReadActivity"
+44-->C:\code\nfc\app\src\main\AndroidManifest.xml:34:13-41
+45            android:windowSoftInputMode="stateHidden" >
+45-->C:\code\nfc\app\src\main\AndroidManifest.xml:35:13-54
+46            <intent-filter>
+46-->C:\code\nfc\app\src\main\AndroidManifest.xml:36:13-42:29
+47                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+47-->C:\code\nfc\app\src\main\AndroidManifest.xml:37:17-77
+47-->C:\code\nfc\app\src\main\AndroidManifest.xml:37:25-74
+48
+49                <category android:name="android.intent.category.DEFAULT" />
+49-->C:\code\nfc\app\src\main\AndroidManifest.xml:39:17-76
+49-->C:\code\nfc\app\src\main\AndroidManifest.xml:39:27-73
+50
+51                <data android:mimeType="text/plain" />
+51-->C:\code\nfc\app\src\main\AndroidManifest.xml:41:17-55
+51-->C:\code\nfc\app\src\main\AndroidManifest.xml:41:23-52
+52            </intent-filter>
+53        </activity>
+54        <activity android:name="com.service.sohan.nfcreadwritetest.WriteActivity" >
+54-->C:\code\nfc\app\src\main\AndroidManifest.xml:45:9-53:20
+54-->C:\code\nfc\app\src\main\AndroidManifest.xml:45:19-48
+55
+56            <!-- <intent-filter> -->
+57            <!-- <action android:name="android.nfc.action.NDEF_DISCOVERED" /> -->
+58
 59
-60
-61            <!-- <category android:name="android.intent.category.ALTERNATIVE" /> -->
+60            <!-- <category android:name="android.intent.category.ALTERNATIVE" /> -->
+61
 62
-63
-64            <!-- <data android:mimeType="text/plain" /> -->
-65            <!-- </intent-filter> -->
-66        </activity>
-67    </application>
-68
-69</manifest>
+63            <!-- <data android:mimeType="text/plain" /> -->
+64            <!-- </intent-filter> -->
+65        </activity>
+66    </application>
+67
+68</manifest>

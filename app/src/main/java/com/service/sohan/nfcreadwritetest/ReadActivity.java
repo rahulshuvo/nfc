@@ -82,7 +82,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class ReadActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener{
     private final String TAG = "nfc_"+this.getClass().getSimpleName();
-    //String TAG = "PhoneActivityTAGReader";
     Activity activity = ReadActivity.this;
     String wantPermission = Manifest.permission.READ_PHONE_STATE;
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -108,8 +107,6 @@ public class ReadActivity extends AppCompatActivity implements
     List<StateResponse.Data> stateList;
     List<ContactTypeResponse.Data> contactTypeList;
     List<CategoryResponse.Data> categoryList;
-    //    List<String> categoryList;
-//    List<String> typeList;
     Spinner spinCat, spinTyp;
     ArrayAdapter adapterCat, adapterTyp;
     String stateValue = "";
@@ -118,10 +115,10 @@ public class ReadActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read);
         //readTag = (TextView)findViewById(R.id.nfc_contents);
-        tvVersion = (TextView)findViewById(R.id.tvVersion);
-        int versionCode = BuildConfig.VERSION_CODE;
-        String versionName = BuildConfig.VERSION_NAME;
-        tvVersion.setText("Version: "+versionName);
+        //tvVersion = (TextView)findViewById(R.id.tvVersion);
+        //int versionCode = BuildConfig.VERSION_CODE;
+        //String versionName = BuildConfig.VERSION_NAME;
+        //tvVersion.setText("Version: "+versionName);
 
         llMain = (LinearLayout)findViewById(R.id.llMain);
         stateList = new ArrayList<>();
@@ -147,7 +144,6 @@ public class ReadActivity extends AppCompatActivity implements
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), WebViewActivity.class));
             }
         });
 
@@ -173,17 +169,6 @@ public class ReadActivity extends AppCompatActivity implements
                         sharedValue = "0";
                         postReaderData(sharedValue);
 
-//                        AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
-//                        ad.setCancelable(false);
-//                        ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                //postReaderData();
-//                            }
-//                        });
-//                        ad.setTitle("Error");
-//                        ad.setMessage("Please select from saving option, Contact list, Web or both?");
-//                        ad.show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), validate(), Toast.LENGTH_LONG).show();
@@ -194,19 +179,8 @@ public class ReadActivity extends AppCompatActivity implements
         name = (EditText)findViewById(R.id.etFirstName);
         lastname = (EditText)findViewById(R.id.etLastName);
         cell = (EditText)findViewById(R.id.etCell);
-//        cell.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean hasFocus) {
-//                if (hasFocus) {
-//                    //Toast.makeText(getApplicationContext(), "Got the focus", Toast.LENGTH_LONG).show();
-//                } else {
-//                    // Toast.makeText(getApplicationContext(), "Lost the focus", Toast.LENGTH_LONG).show();
-//                    getUser();
-//                }
-//            }
-//        });
 
-        spinCat = (Spinner)findViewById(R.id.spinCategory);
+        /*//spinCat = (Spinner)findViewById(R.id.spinCategory);
         spinCat.setOnItemSelectedListener(this);
         adapterCat = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
         adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -214,68 +188,33 @@ public class ReadActivity extends AppCompatActivity implements
         adapterCat.addAll(categoryList);
         spinCat.setAdapter(adapterCat);
 
-        spinTyp = (Spinner)findViewById(R.id.spinContactType);
+        //spinTyp = (Spinner)findViewById(R.id.spinContactType);
         spinTyp.setOnItemSelectedListener(this);
         adapterTyp = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
         adapterTyp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapterTyp.add("Select Contact Type");
         adapterTyp.addAll(contactTypeList);
-        spinTyp.setAdapter(adapterTyp);
+        spinTyp.setAdapter(adapterTyp);*/
 
-//        comClient = (AutoCompleteTextView)findViewById(R.id.comSymbol);
-//        comClient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (comClient.getText().length() > 0) {
-//
-//                    InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//                    imm.hideSoftInputFromWindow(llMain.getWindowToken(), 0);
-//
-//                    //Toast.makeText(getApplicationContext(), "selected "+comClient.getText().toString(), Toast.LENGTH_LONG).show();
-////                    String b4companyCode = comClient.getText().toString();
-////                    String[] parts = b4companyCode.split("-");
-////                    String code = parts[0]; // 004
-////                    companyCode = code;
-//
-//                    String Code = comClient.getText().toString();
-//                    companyCode = Code;
-//                    int index = getIndex(companyCode);
-//                    stateValue = stateList.get(index).getState();
-//                    //Toast.makeText(getApplicationContext(), "selected state "+stateValue, Toast.LENGTH_LONG).show();
-//                } else {
-//                    Toast.makeText(getApplicationContext(), "Please select a company", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-//        sourceAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
-//
-//        comClient.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                comClient.showDropDown();
-//            }
-//        });
 
         address = (EditText)findViewById(R.id.etAddress);
-        city = (EditText)findViewById(R.id.etCity);
-        state = (EditText)findViewById(R.id.etState);
+        //city = (EditText)findViewById(R.id.etCity);
+        //state = (EditText)findViewById(R.id.etState);
         email = (EditText)findViewById(R.id.etEmail);
         workNumber = (EditText)findViewById(R.id.etWorkNumber);
         company = (EditText)findViewById(R.id.etCompany);
         devicePhone = (EditText)findViewById(R.id.etDevicePhone);
         deviceOwnerName = (EditText)findViewById(R.id.etDeviceOwnerName);
-        workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
-        faxNumber = (EditText)findViewById(R.id.etFaxNumber);
-        websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
-        realPhone = (EditText)findViewById(R.id.etRealPhone);
+        //workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
+        //faxNumber = (EditText)findViewById(R.id.etFaxNumber);
+        //websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
+        //realPhone = (EditText)findViewById(R.id.etRealPhone);
         otherInfo = (EditText)findViewById(R.id.etOtherInfo);
-        //etcontactType = (EditText)findViewById(R.id.etContactType);
-        //categoryType = (EditText)findViewById(R.id.etCategory);
         etTitle = (EditText)findViewById(R.id.etTitle);
-        region = (EditText)findViewById(R.id.etRegion);
-        zipcode = (EditText)findViewById(R.id.etZipCode);
-        etAddress2 = (EditText)findViewById(R.id.etAddress2);
-        memo = (EditText)findViewById(R.id.etMemo);
+        //region = (EditText)findViewById(R.id.etRegion);
+        //zipcode = (EditText)findViewById(R.id.etZipCode);
+        //etAddress2 = (EditText)findViewById(R.id.etAddress2);
+        //memo = (EditText)findViewById(R.id.etMemo);
 
         mCompositeDisposable = new CompositeDisposable();
         apiInterface = ApiUtils.getService();
@@ -284,22 +223,6 @@ public class ReadActivity extends AppCompatActivity implements
         if (!checkPermission(wantPermission)) {
             requestPermission(wantPermission);
         } else {
-//            Log.d(TAG, "Phone number final: " + getPhone());
-//            //phoneNumber = getPhone();
-//            _mst = getPhone();
-//            for (String op: _mst) {
-//                Log.d("Device Information", String.valueOf(op));
-//            }
-
-//            try {
-//                TelephonyManager telemamanger = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-//                Log.d(TAG, "Serial: " + telemamanger.getSimSerialNumber());
-//                Log.d(TAG, "Sim: " + telemamanger.getLine1Number());
-//                phoneNumber = telemamanger.getLine1Number().replace("+", "");
-//
-//            }catch (Exception e){
-//                phoneNumber = "";
-//            }
         }
 
         try {
@@ -325,7 +248,7 @@ public class ReadActivity extends AppCompatActivity implements
             phoneNumber = "";
             devicePhone.setText("");
         }
-        getContactType();
+        //getContactType();
         //testRead();
     }
 
@@ -334,7 +257,7 @@ public class ReadActivity extends AppCompatActivity implements
         boolean checked = ((CheckBox) view).isChecked();
 
         // Check which checkbox was clicked
-        switch(view.getId()) {
+        /*switch(view.getId()) {
             case R.id.checkbox_contact:
                 if (checked){
                     contactListSelected = true;
@@ -350,17 +273,8 @@ public class ReadActivity extends AppCompatActivity implements
                 }
                 break;
             // TODO: Veggie sandwich
-        }
+        }*/
     }
-
-    //--------------------- get phoneNumber methods ----------------------
-//    private String getPhone() {
-//        TelephonyManager phoneMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-//        if (ActivityCompat.checkSelfPermission(activity, wantPermission) != PackageManager.PERMISSION_GRANTED) {
-//            return "";
-//        }
-//        return phoneMgr.getLine1Number();
-//    }
 
     @TargetApi(Build.VERSION_CODES.O)
     private ArrayList<String> getPhone() {
@@ -380,16 +294,6 @@ public class ReadActivity extends AppCompatActivity implements
         return _lst;
     }
 
-//    public int getIndex(String stateName){
-//        int index = 0;
-//        for(int i=0; i<stateList.size(); i++){
-//            if(stateList.get(i).getSTATENAME().equals(stateName)){
-//                index = i;
-//                break;
-//            }
-//        }
-//        return index;
-//    }
 
     private void requestPermission(String permission){
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)){
@@ -430,7 +334,28 @@ public class ReadActivity extends AppCompatActivity implements
         if(isNetworkAvailable()){
             dialog = ProgressDialog.show(ReadActivity.this, "", "Data Posting. Please wait.....", true);
             //String Data = "Firstname:Sohan|Lastname:Azad|Companyname:BeRich|Phone:8801819123123|Email:muhitunazad@gmail.com";
-            String Data = "FirstName:"+name.getText().toString()+"|LastName:"+lastname.getText().toString()+"|CompanyName:"+company.getText().toString()+"|Phone:"+cell.getText().toString()+"|Email:"+email.getText().toString()+"|Address:"+address.getText().toString()+"|City:"+city.getText().toString()+"|State:"+state.getText().toString()+"|WorkPhoneExt:"+workNumberEnterprise.getText().toString()+"|Fax:"+faxNumber.getText().toString()+"|Website:"+websiteLink.getText().toString()+"|Category:"+category+"|TypeOfContact:"+contactType+"|RefPhone:"+realPhone.getText().toString()+"|Other:"+otherInfo.getText().toString()+"|WorkPhone:"+workNumber.getText().toString()+"|Title:"+etTitle.getText().toString()+"|Address1:"+etAddress2.getText().toString()+"|Region:"+region.getText().toString()+"|Zip:"+zipcode.getText().toString()+"|memo:"+memo.getText().toString();
+            //String Data1 = "FirstName:"+name.getText().toString()+"|LastName:"+lastname.getText().toString()+"|CompanyName:"+company.getText().toString()+"|Phone:"+cell.getText().toString()+"|Email:"+email.getText().toString()+"|Address:"+address.getText().toString()+"|City:"+city.getText().toString()+"|State:"+state.getText().toString()+"|WorkPhoneExt:"+workNumberEnterprise.getText().toString()+"|Fax:"+faxNumber.getText().toString()+"|Website:"+websiteLink.getText().toString()+"|Category:"+category+"|TypeOfContact:"+contactType+"|RefPhone:"+realPhone.getText().toString()+"|Other:"+otherInfo.getText().toString()+"|WorkPhone:"+workNumber.getText().toString()+"|Title:"+etTitle.getText().toString()+"|Address1:"+etAddress2.getText().toString()+"|Region:"+region.getText().toString()+"|Zip:"+zipcode.getText().toString()+"|memo:"+memo.getText().toString();
+            String Data =
+                    "FirstName:"+name.getText().toString()+
+                    "|LastName:"+lastname.getText().toString()+
+                    "|CompanyName:"+company.getText().toString()+
+                    "|Phone:"+cell.getText().toString()+
+                    "|Email:"+email.getText().toString()+
+                    "|Address:"+address.getText().toString()+
+                    //"|City:"+city.getText().toString()+
+                    //"|State:"+state.getText().toString()+
+                    //"|WorkPhoneExt:"+workNumberEnterprise.getText().toString()+
+                    //"|Fax:"+faxNumber.getText().toString()+
+                    //"|Website:"+websiteLink.getText().toString()+
+                    //"|Category:"+category+"|TypeOfContact:"+contactType+
+                    //"|RefPhone:"+realPhone.getText().toString()+
+                    "|Other:"+otherInfo.getText().toString()+
+                    "|WorkPhone:"+workNumber.getText().toString()+
+                    "|Title:"+etTitle.getText().toString();
+                    //"|Address1:"+etAddress2.getText().toString()+
+                    //"|Region:"+region.getText().toString()+
+                    //"|Zip:"+zipcode.getText().toString()+
+                    //"|memo:"+memo.getText().toString();
             Log.d(TAG, "shared:"+sharedValue+" name:"+deviceOwnerName.getText().toString()+" fp:"+devicePhone.getText().toString()+" tp:"+cell.getText().toString()+" Data:"+Data);
             mCompositeDisposable.add(apiInterface.postReaderData(sharedValue, deviceOwnerName.getText().toString(), devicePhone.getText().toString(), cell.getText().toString(), Data) // while release give user id
                     .subscribeOn(Schedulers.io())
@@ -513,7 +438,7 @@ public class ReadActivity extends AppCompatActivity implements
         //Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
     }
 
-    public void getContactType(){
+    /*public void getContactType(){
 
         if(isNetworkAvailable()){
             dialog = ProgressDialog.show(ReadActivity.this, "", "Data loading. Please wait.....", true);
@@ -538,7 +463,7 @@ public class ReadActivity extends AppCompatActivity implements
             ad.setMessage("Please check your internet connection and try again");
             ad.show();
         }
-    }
+    }*/
 
 
     private void handleResponsesContact(ContactTypeResponse clientResponse) {
@@ -555,7 +480,7 @@ public class ReadActivity extends AppCompatActivity implements
             adapterTyp.add("Select Contact Type");
             adapterTyp.addAll(contactTypeList);
             spinTyp.setAdapter(adapterTyp);
-            getCategory();
+            //getCategory();
         }else{
             //recyclerView.setAdapter(null);
             //Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
@@ -564,7 +489,7 @@ public class ReadActivity extends AppCompatActivity implements
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // loadInvestorInfo();
-                    getContactType();
+                    //getContactType();
                 }
             });
             ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
@@ -587,7 +512,7 @@ public class ReadActivity extends AppCompatActivity implements
     }
 
 
-    public void getCategory(){
+    /*public void getCategory(){
 
         if(isNetworkAvailable()){
             dialog = ProgressDialog.show(ReadActivity.this, "", "Data loading. Please wait.....", true);
@@ -612,7 +537,7 @@ public class ReadActivity extends AppCompatActivity implements
             ad.setMessage("Please check your internet connection and try again");
             ad.show();
         }
-    }
+    }*/
 
 
     private void handleResponsesCategory(CategoryResponse clientResponse) {
@@ -637,7 +562,7 @@ public class ReadActivity extends AppCompatActivity implements
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     // loadInvestorInfo();
-                    getContactType();
+                    //getContactType();
                 }
             });
             ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
@@ -702,71 +627,31 @@ public class ReadActivity extends AppCompatActivity implements
             company.setText(clientResponse.getData().get(0).getCompanyName());
             etTitle.setText(clientResponse.getData().get(0).getTitle());
             address.setText(clientResponse.getData().get(0).getAddress());
-            etAddress2.setText(clientResponse.getData().get(0).getAddress1());
-            city.setText(clientResponse.getData().get(0).getCity());
+            //etAddress2.setText(clientResponse.getData().get(0).getAddress1());
+            //city.setText(clientResponse.getData().get(0).getCity());
 
             //comClient.setText(clientResponse.getData().get(0).getState());
-            state.setText(clientResponse.getData().get(0).getState());
+            //state.setText(clientResponse.getData().get(0).getState());
             //s.setText(clientResponse.getData().get(0).getFirstName());
 
             email.setText(clientResponse.getData().get(0).getEmail());
             workNumber.setText(clientResponse.getData().get(0).getWorkPhone());
-            workNumberEnterprise.setText(clientResponse.getData().get(0).getWorkPhoneExt());
-            faxNumber.setText(clientResponse.getData().get(0).getFax());
+            //workNumberEnterprise.setText(clientResponse.getData().get(0).getWorkPhoneExt());
+            //faxNumber.setText(clientResponse.getData().get(0).getFax());
 
-            categoryType.setText(clientResponse.getData().get(0).getCategory());
-            etcontactType.setText(clientResponse.getData().get(0).getTypeOfContact());
+            //categoryType.setText(clientResponse.getData().get(0).getCategory());
+            //etcontactType.setText(clientResponse.getData().get(0).getTypeOfContact());
 
-            websiteLink.setText(clientResponse.getData().get(0).getWebsite());
-            realPhone.setText(clientResponse.getData().get(0).getRefPhone());
+            //websiteLink.setText(clientResponse.getData().get(0).getWebsite());
+            //realPhone.setText(clientResponse.getData().get(0).getRefPhone());
             otherInfo.setText(clientResponse.getData().get(0).getOther());
 
-//            AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
-//            ad.setCancelable(false);
-//            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//
-//                }
-//            });
-//            ad.setTitle("Status");
-//            ad.setMessage("Data retrieved successfully");
-//            ad.show();
-        }else{
-//            AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
-//            ad.setCancelable(false);
-//            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                }
-//            });
-//            ad.setTitle("Error");
-//            ad.setMessage(clientResponse.getMessage());
-//            ad.show();
         }
 
     }
 
     private void handleErrorUser(Throwable error) {
         dialog.dismiss();
-//        Log.d(TAG, "Error "+error);
-//        AlertDialog.Builder ad = new AlertDialog.Builder(ReadActivity.this);
-//        ad.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                getUser();
-//            }
-//        });
-//        ad.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//            }
-//        });
-//        ad.setTitle("Error");
-//        ad.setMessage(error+"");
-//        ad.show();
-        //Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
     }
 
     public void saveContacts(){
@@ -789,7 +674,7 @@ public class ReadActivity extends AppCompatActivity implements
             return false;
     }
 
-    public void testRead(){
+    /*public void testRead(){
         String text = "{\"fn\":\"nTunvir Rahman test android write 2\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"ak\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
 
         JsonObject convertedObject = new Gson().fromJson(text.trim(), JsonObject.class);
@@ -798,23 +683,23 @@ public class ReadActivity extends AppCompatActivity implements
         lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
         cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
         address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
-        city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
-        state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
+        //city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
+        //state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
         email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
         workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
         company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
-        workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
-        faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
-        websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
-        realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
+        //workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
+        //faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
+        //websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
+        //realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
         otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
-        etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
-        categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
+        //etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
+        //categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
         etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
-        etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
-        region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
-        zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
-    }
+        //etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
+        //region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
+        //zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
+    }*/
 
     private void readFromIntent(Intent intent) {
         String action = intent.getAction();
@@ -834,79 +719,6 @@ public class ReadActivity extends AppCompatActivity implements
     }
 
 
-//    private void buildTagViews(NdefMessage[] msgs) {
-//        if (msgs == null || msgs.length == 0) return;
-//
-//        String text = "";
-////        String tagId = new String(msgs[0].getRecords()[0].getType());
-//        byte[] payload = msgs[0].getRecords()[0].getPayload();
-//        Log.d(TAG, "payload "+payload);
-//        String textEncoding = ((payload[0] & 128) == 0) ? "UTF-8" : "UTF-16"; // Get the Text Encoding
-//        Log.d(TAG, "Text encoding "+text);
-//        int languageCodeLength = payload[0] & 0063; // Get the Language Code, e.g. "en"
-//        Log.d(TAG, "language code length "+languageCodeLength);
-//        // String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
-//
-//        try {
-//            // Get the Text
-//            text = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
-//            Log.d(TAG, "Retrieved Text "+text);
-//            Log.d(TAG, "payload "+payload+" language Code length "+languageCodeLength+" textEncoding "+textEncoding+" payload length "+payload.length);
-//            //Toast.makeText(getApplicationContext(), text.toString(), Toast.LENGTH_LONG).show();
-//        } catch (UnsupportedEncodingException e) {
-//            Log.d(TAG, "UnsupportedEncoding"+ e.toString());
-//        }
-////        readTag.setText("NFC Content: " + text);
-//        try {
-//            //JSONObject jsonObject = new JSONObject(text.toString());  //"{\"phonetype\":\"N95\",\"cat\":\"WP\"}"
-////            JsonParser jsonParser = new JsonParser();
-////            JsonObject jo = (JsonObject)jsonParser.parse(text);
-////            JsonObject jsonObject = (new JsonParser()).parse(text).getAsJsonObject();
-////            Log.d(TAG, "Test "+jsonObject.get("FirstName"));
-//
-//            JsonObject convertedObject = new Gson().fromJson(text.trim().replace("\\u{02}en",""), JsonObject.class);
-//
-//            name.setText(convertedObject.get("fn").toString().replaceAll("^\"|\"$", ""));
-//            lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
-//            cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
-//            address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
-//            city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
-//            state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
-//            email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
-//            workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
-//            company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
-//            workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
-//            faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
-//            websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
-//            realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
-//            otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
-//            etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
-//            categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
-//            etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
-//            etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
-//            region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
-//            zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
-//
-//
-//
-//
-////            workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
-////            faxNumber = (EditText)findViewById(R.id.etFaxNumber);
-////            websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
-////            realPhone = (EditText)findViewById(R.id.etRealPhone);
-////            otherInfo = (EditText)findViewById(R.id.etOtherInfo);
-////            etcontactType = (EditText)findViewById(R.id.etContactType);
-////            categoryType = (EditText)findViewById(R.id.etCategory);
-//        }catch (Exception e){
-//            Log.d(TAG, "Exception in reading "+e.toString());
-//        }
-////        catch (JSONException err){
-////            Log.d("Error", err.toString());
-////        }
-////        catch (UnsupportedEncodingException e) {
-////            e.printStackTrace();
-////        }
-//    }
 
     private void buildTagViews(NdefMessage[] msgs) {
         if (msgs == null || msgs.length == 0) return;
@@ -917,47 +729,27 @@ public class ReadActivity extends AppCompatActivity implements
             text = new String(payload, "UTF-8");
             JsonObject convertedObject = new Gson().fromJson(text.trim().replace("en{\"a\":","{\"a\":"), JsonObject.class);
 
-//            name.setText(convertedObject.get("fn").toString().replaceAll("^\"|\"$", ""));
-//            lastname.setText(convertedObject.get("ln").toString().replaceAll("^\"|\"$", ""));
-//            cell.setText(convertedObject.get("pn").toString().replaceAll("^\"|\"$", ""));
-//            address.setText(convertedObject.get("ad1").toString().replaceAll("^\"|\"$", ""));
-//            city.setText(convertedObject.get("ct").toString().replaceAll("^\"|\"$", ""));
-//            state.setText(convertedObject.get("st").toString().replaceAll("^\"|\"$", ""));
-//            email.setText(convertedObject.get("em").toString().replaceAll("^\"|\"$", ""));
-//            workNumber.setText(convertedObject.get("wn").toString().replaceAll("^\"|\"$", ""));
-//            company.setText(convertedObject.get("cn").toString().replaceAll("^\"|\"$", ""));
-//            workNumberEnterprise.setText(convertedObject.get("wne").toString().replaceAll("^\"|\"$", ""));
-//            faxNumber.setText(convertedObject.get("fx").toString().replaceAll("^\"|\"$", ""));
-//            websiteLink.setText(convertedObject.get("wl").toString().replaceAll("^\"|\"$", ""));
-//            categoryType.setText(convertedObject.get("cat").toString().replaceAll("^\"|\"$", ""));
-//            etcontactType.setText(convertedObject.get("cty").toString().replaceAll("^\"|\"$", ""));
-//            realPhone.setText(convertedObject.get("rp").toString().replaceAll("^\"|\"$", ""));
-//            otherInfo.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
-//            etTitle.setText(convertedObject.get("tl").toString().replaceAll("^\"|\"$", ""));
-//            etAddress2.setText(convertedObject.get("ad2").toString().replaceAll("^\"|\"$", ""));
-//            zipcode.setText(convertedObject.get("z").toString().replaceAll("^\"|\"$", ""));
-//            region.setText(convertedObject.get("rg").toString().replaceAll("^\"|\"$", ""));
 
             name.setText(convertedObject.get("a").toString().replaceAll("^\"|\"$", ""));
             lastname.setText(convertedObject.get("b").toString().replaceAll("^\"|\"$", ""));
             cell.setText(convertedObject.get("c").toString().replaceAll("^\"|\"$", ""));
             address.setText(convertedObject.get("d").toString().replaceAll("^\"|\"$", ""));
-            city.setText(convertedObject.get("e").toString().replaceAll("^\"|\"$", ""));
-            state.setText(convertedObject.get("f").toString().replaceAll("^\"|\"$", ""));
+            //city.setText(convertedObject.get("e").toString().replaceAll("^\"|\"$", ""));
+            //state.setText(convertedObject.get("f").toString().replaceAll("^\"|\"$", ""));
             email.setText(convertedObject.get("g").toString().replaceAll("^\"|\"$", ""));
             workNumber.setText(convertedObject.get("h").toString().replaceAll("^\"|\"$", ""));
             company.setText(convertedObject.get("i").toString().replaceAll("^\"|\"$", ""));
-            workNumberEnterprise.setText(convertedObject.get("j").toString().replaceAll("^\"|\"$", ""));
-            faxNumber.setText(convertedObject.get("k").toString().replaceAll("^\"|\"$", ""));
-            websiteLink.setText(convertedObject.get("l").toString().replaceAll("^\"|\"$", ""));
+            //workNumberEnterprise.setText(convertedObject.get("j").toString().replaceAll("^\"|\"$", ""));
+            //faxNumber.setText(convertedObject.get("k").toString().replaceAll("^\"|\"$", ""));
+            //websiteLink.setText(convertedObject.get("l").toString().replaceAll("^\"|\"$", ""));
 //            categoryType.setText(convertedObject.get("m").toString().replaceAll("^\"|\"$", ""));
 //            etcontactType.setText(convertedObject.get("n").toString().replaceAll("^\"|\"$", ""));
-            realPhone.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
+            //realPhone.setText(convertedObject.get("o").toString().replaceAll("^\"|\"$", ""));
             otherInfo.setText(convertedObject.get("p").toString().replaceAll("^\"|\"$", ""));
             etTitle.setText(convertedObject.get("q").toString().replaceAll("^\"|\"$", ""));
-            etAddress2.setText(convertedObject.get("r").toString().replaceAll("^\"|\"$", ""));
-            zipcode.setText(convertedObject.get("s").toString().replaceAll("^\"|\"$", ""));
-            region.setText(convertedObject.get("t").toString().replaceAll("^\"|\"$", ""));
+            //etAddress2.setText(convertedObject.get("r").toString().replaceAll("^\"|\"$", ""));
+            //zipcode.setText(convertedObject.get("s").toString().replaceAll("^\"|\"$", ""));
+            //region.setText(convertedObject.get("t").toString().replaceAll("^\"|\"$", ""));
 
         }catch (Exception e){
             Log.d(TAG, "Exception in reading "+e.toString());
@@ -967,7 +759,7 @@ public class ReadActivity extends AppCompatActivity implements
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
-        switch (parent.getId()) {
+        /*switch (parent.getId()) {
             case R.id.spinCategory:
                 if(pos==0){
                     category = "";
@@ -986,7 +778,7 @@ public class ReadActivity extends AppCompatActivity implements
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     @Override
@@ -1013,22 +805,6 @@ public class ReadActivity extends AppCompatActivity implements
             isValid = "Please enter last name";
             return isValid;
         }
-//        if (TextUtils.isEmpty(zipcode.getText().toString().trim())) {
-//            isValid = "Please enter zip code";
-//            return isValid;
-//        }
-//        if (TextUtils.isEmpty(address.getText().toString().trim())) {
-//            isValid = "Please enter company name";
-//            return isValid;
-//        }
-//        if (TextUtils.isEmpty(city.getText().toString().trim())) {
-//            isValid = "Please enter city";
-//            return isValid;
-//        }
-//        if (TextUtils.isEmpty(state.getText().toString().trim())) {
-//            isValid = "Please enter state";
-//            return isValid;
-//        }
         if (TextUtils.isEmpty(email.getText().toString().trim())) {
             isValid = "Please enter email";
             return isValid;
@@ -1037,7 +813,7 @@ public class ReadActivity extends AppCompatActivity implements
             isValid = "Please enter work number";
             return isValid;
         }
-        if(TextUtils.isEmpty(workNumberEnterprise.getText().toString().trim())){
+        /*if(TextUtils.isEmpty(workNumberEnterprise.getText().toString().trim())){
 
         }else{
             if(workNumberEnterprise.getText().toString().length()>1 & workNumberEnterprise.getText().toString().length()<10){
@@ -1046,15 +822,11 @@ public class ReadActivity extends AppCompatActivity implements
                 isValid = "Work number extension should not exceed 10 digit";
                 return isValid;
             }
-        }
+        }*/
         if (TextUtils.isEmpty(devicePhone.getText().toString().trim())) {
             isValid = "Please enter device phone number";
             return isValid;
         }
-//        if (TextUtils.isEmpty(deviceOwnerName.getText().toString().trim())) {
-//            isValid = "Please enter device owner name";
-//            return isValid;
-//        }
         return isValid;
     }
 //

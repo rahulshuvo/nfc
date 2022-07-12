@@ -132,16 +132,8 @@
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.service.sohan.nfcreadwritetest.app-merged_res-9:/drawable_logos1.png.flat",
-        "source": "com.service.sohan.nfcreadwritetest.app-main-11:/drawable/logos1.png"
-    },
-    {
         "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\mipmap-xhdpi_logo.png.flat",
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\mipmap-xhdpi\\logo.png"
-    },
-    {
-        "merged": "com.service.sohan.nfcreadwritetest.app-merged_res-9:/layout_activity_main.xml.flat",
-        "source": "com.service.sohan.nfcreadwritetest.app-main-11:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\mipmap-xxhdpi_launcher_icon.png.flat",
@@ -200,6 +192,10 @@
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "com.service.sohan.nfcreadwritetest.app-merged_res-9:/layout_activity_write.xml.flat",
+        "source": "com.service.sohan.nfcreadwritetest.app-main-11:/layout/activity_write.xml"
+    },
+    {
         "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\mipmap-xxhdpi_launcher_icon_new.png.flat",
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\mipmap-xxhdpi\\launcher_icon_new.png"
     },
@@ -212,10 +208,6 @@
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-pngs-4:\\drawable-mdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "com.service.sohan.nfcreadwritetest.app-merged_res-9:/drawable_logos.png.flat",
-        "source": "com.service.sohan.nfcreadwritetest.app-main-11:/drawable/logos.png"
-    },
-    {
         "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\mipmap-xhdpi_launcher_icon_round.png.flat",
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\mipmap-xhdpi\\launcher_icon_round.png"
     },
@@ -226,6 +218,10 @@
     {
         "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\drawable_ic_launcher1.png.flat",
+        "source": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-main-11:\\drawable\\ic_launcher1.png"
     },
     {
         "merged": "C:\\Users\\rahul\\.gradle\\daemon\\7.3.3\\com.service.sohan.nfcreadwritetest.app-merged_res-9:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",

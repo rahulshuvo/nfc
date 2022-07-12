@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#A4EDF7"
+    android:background="#F8EEE5"
     android:layout_height="match_parent"
     tools:context=".WriteActivity">
 
@@ -13,60 +13,30 @@
         android:id="@+id/llMain"
         android:orientation="vertical">
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="10dp"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:textStyle="bold"-->
-            <!--android:textSize="20dp"-->
-            <!--android:textColor="#000000"-->
-            <!--android:text="AD Space">-->
-        <!--</TextView>-->
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="40dp"
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/imgLogo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/logos"
-                android:id="@+id/imgLogo"/>
+                android:src="@drawable/logos" />
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Writer"
                 android:id="@+id/tvTitle"
-                android:textColor="#000000"
-                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@+id/imgLogo"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver"
-                android:textColor="#000000"
-                android:id="@+id/tvVersion"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/imgLogo"
-                android:layout_below="@+id/tvTitle"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:text="Writer"
                 android:textColor="#000000"
-                android:paddingLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:text="All rights reserved, Copyrighted 2019,2020, BCMC, eTag365, Patent Pending."
-                android:layout_toRightOf="@+id/imgLogo"
-                android:layout_below="@+id/tvVersion"/>
+                android:textSize="20dp" />
+
 
         </RelativeLayout>
 
@@ -80,7 +50,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*Cell Number:"
+                android:text="*Mobile No.:"
                 android:textColor="#000000"
                 android:layout_gravity="center_vertical"
                 android:layout_height="wrap_content"
@@ -91,7 +61,7 @@
                 android:id="@+id/etCell"
                 android:inputType="phone"
                 android:textSize="15dp"
-                android:hint="Enter Cell number with country code"
+                android:hint="Enter Mobile No. with country code"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"/>
 
@@ -153,7 +123,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="Title:"
+                android:text="*Age:"
                 android:textColor="#000000"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -176,7 +146,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="Company:"
+                android:text="*Blood Group:"
                 android:textColor="#000000"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -199,7 +169,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="Address1:"
+                android:text="Address:"
                 android:textColor="#000000"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -212,7 +182,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
@@ -340,7 +310,7 @@
                 android:layout_weight="3"/>
 
         </LinearLayout>
-
+-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
@@ -375,10 +345,10 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:text="*Work Number:"
-                android:textColor="#000000"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:text="*Emergency Contact:"
+                android:textColor="#000000" />
 
             <EditText
                 android:layout_width="0dp"
@@ -390,7 +360,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
@@ -414,9 +384,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"/>
 
-        </LinearLayout>
+        </LinearLayout>-->
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
@@ -440,9 +410,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"/>
 
-        </LinearLayout>
+        </LinearLayout>-->
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
@@ -466,7 +436,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"/>
 
-        </LinearLayout>
+        </LinearLayout>-->
 
 <!--        <LinearLayout-->
 <!--            style="?android:attr/buttonBarStyle"-->
@@ -536,7 +506,7 @@
 
 <!--        </LinearLayout>-->
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
@@ -560,14 +530,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"/>
 
-        </LinearLayout>
+        </LinearLayout>-->
 
         <EditText
             android:layout_width="match_parent"
             android:id="@+id/etOtherInfo"
             android:inputType="textMultiLine"
             android:textColor="#000000"
-            android:hint="Other Info / Back Of Side"
+            android:hint="Medical Records"
             android:textColorHint="#000"
             android:layout_margin="10dp"
             android:layout_height="wrap_content"

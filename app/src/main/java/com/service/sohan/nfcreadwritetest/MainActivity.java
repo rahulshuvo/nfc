@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
         mCompositeDisposable = new CompositeDisposable();
         apiInterface = ApiUtils.getService();
-        getVersion();
+        /*getVersion();*/
     }
 
-    public void getVersion(){
+    /*public void getVersion(){
         if(isNetworkAvailable()){
             dialog = ProgressDialog.show(MainActivity.this, "", "Data Loading. Please wait.....", true);
             mCompositeDisposable.add(apiInterface.getVersion() // while release give user id
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             ad.show();
         }
 
-    }
+    }*/
 
 
     private void handleResponseVersion(VersionResponse clientResponse) {
@@ -165,11 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 alertBuilder.setNegativeButton("Close Application", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //System.exit(0);
-//                            Intent intent = new Intent(getActivity(), MainActivity.class);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            intent.putExtra("Exit", true);
-//                            startActivity(intent);
                         finish();
                     }
                 });

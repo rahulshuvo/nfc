@@ -25,7 +25,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/launcher_icon_new"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity android:name="com.service.sohan.nfcreadwritetest.WebViewActivity" />

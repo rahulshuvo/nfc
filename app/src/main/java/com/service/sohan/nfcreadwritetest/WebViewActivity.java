@@ -12,6 +12,6 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
 
         WebView myWebView = (WebView) findViewById(R.id.webview);
-        myWebView.loadUrl("https://etag365.net");
+        myWebView.loadUrl("https://etag365.net/epatient");
     }
 }

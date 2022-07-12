@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#000000"
+    android:background="#F8EEE5"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="#ffffff"
+        android:textColor="#000"
         android:text="WELCOME"
         android:layout_marginTop="40dp"
         android:textSize="20dp"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_height="5dp"
-            android:background="#ffffff"></View>
+            android:background="#000"></View>
 
         <ImageView
             android:layout_width="100dp"
@@ -49,19 +49,20 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reader"
-        android:background="#ff0000"
-        android:textColor="#ffffff"
+        android:text="View"
+        android:background="#ccceee"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/btnReader"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_marginTop="15dp"
             android:layout_height="5dp"
-            android:background="#ffffff"></View>
+            android:background="#000"></View>
 
         <ImageView
             android:layout_width="100dp"
@@ -75,18 +76,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Writer"
-        android:background="#ff0000"
-        android:textColor="#ffffff"
+        android:background="#ccceee"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/btnWriter"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_marginTop="15dp"
             android:layout_height="5dp"
-            android:background="#ffffff"></View>
+            android:background="#000"></View>
 
 
     </LinearLayout>

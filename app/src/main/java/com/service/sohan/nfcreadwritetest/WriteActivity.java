@@ -27,7 +27,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+//import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -80,14 +80,14 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
     ApiInterface apiInterface;
     ProgressDialog dialog;
     ImageView logo;
-    AutoCompleteTextView comClient;
+    //AutoCompleteTextView comClient;
     ArrayAdapter<String> sourceAdapter;
     String companyCode, category, contactType;
     LinearLayout llMain;
     List<StateResponse.Data> stateList;
     List<ContactTypeResponse.Data> contactTypeList;
     List<CategoryResponse.Data> categoryList;
-//    List<String> categoryList;
+    //    List<String> categoryList;
 //    List<String> typeList;
     Spinner spinCat, spinTyp;
     ArrayAdapter adapterCat, adapterTyp;
@@ -100,10 +100,10 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
         context = this;
-        tvVersion = (TextView)findViewById(R.id.tvVersion);
-        int versionCode = BuildConfig.VERSION_CODE;
-        String versionName = BuildConfig.VERSION_NAME;
-        tvVersion.setText("Version: "+versionName);
+        //tvVersion = (TextView)findViewById(R.id.tvVersion);
+        //int versionCode = BuildConfig.VERSION_CODE;
+        //String versionName = BuildConfig.VERSION_NAME;
+        //tvVersion.setText("Version: "+versionName);
 
         readFromIntent(getIntent());
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -114,105 +114,70 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             finish();
         }
 
-        logo = (ImageView)findViewById(R.id.imgLogo);
+        logo = (ImageView) findViewById(R.id.imgLogo);
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), WebViewActivity.class));
             }
         });
 
         stateList = new ArrayList<>();
 
-        llMain = (LinearLayout)findViewById(R.id.llMain);
-        btnExit = (Button)findViewById(R.id.btnExit);
+        llMain = (LinearLayout) findViewById(R.id.llMain);
+        btnExit = (Button) findViewById(R.id.btnExit);
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-//                Intent homeIntent = new Intent(Intent.ACTION_MAIN);
-//                homeIntent.addCategory( Intent.CATEGORY_HOME );
-//                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(homeIntent);
 
             }
         });
         categoryList = new ArrayList<>();
         contactTypeList = new ArrayList<>();
 
-//        categoryList.add("Category 1");
-//        categoryList.add("Category 2");
-//
-//        typeList.add("Mobile");
-//        typeList.add("Work");
-//        typeList.add("Home");
-//        typeList.add("Main");
-//        typeList.add("Work Fax");
-//        typeList.add("Home Fax");
-//        typeList.add("Other");
 
-//        spinCat = (Spinner)findViewById(R.id.spinCategory);
-//        spinCat.setOnItemSelectedListener(this);
-//        adapterCat = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-//        adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        adapterCat.add("Select Category");
-//        adapterCat.addAll(categoryList);
-//        spinCat.setAdapter(adapterCat);
-//
-//        spinTyp = (Spinner)findViewById(R.id.spinContactType);
-//        spinTyp.setOnItemSelectedListener(this);
-//        adapterTyp = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-//        adapterTyp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        adapterTyp.add("Select Contact Type");
-//        adapterTyp.addAll(contactTypeList);
-//        spinTyp.setAdapter(adapterTyp);
-
-        btnWrite = (Button)findViewById(R.id.btnWrite);
+        btnWrite = (Button) findViewById(R.id.btnWrite);
         btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // previous working -------------------------------
-                if(validate()==null){
-                   // Toast.makeText(getApplicationContext(), "All OK", Toast.LENGTH_LONG).show();
+                if (validate() == null) {
+                    // Toast.makeText(getApplicationContext(), "All OK", Toast.LENGTH_LONG).show();
                     try {
-                        if(myTag == null) {
+                        if (myTag == null) {
                             Toast.makeText(context, ERROR_DETECTED, Toast.LENGTH_LONG).show();
                         } else {
-                            totalThreshold = name.getText().toString().getBytes().length+lastname.getText().toString().getBytes().length+cell.getText().toString().getBytes().length+address.getText().toString().getBytes().length+city.getText().toString().getBytes().length+stateValue.toString().getBytes().length+email.getText().toString().getBytes().length+workNumber.getText().toString().getBytes().length+company.getText().toString().getBytes().length+workNumberEnterprise.getText().toString().getBytes().length+faxNumber.getText().toString().getBytes().length+websiteLink.getText().toString().getBytes().length+realPhone.getText().toString().getBytes().length+otherInfo.getText().toString().getBytes().length+etTitle.getText().toString().getBytes().length+etAddress2.getText().toString().getBytes().length+zipcode.getText().toString().getBytes().length+region.getText().toString().getBytes().length;
-                            Log.d(TAG, "Total threshold "+totalThreshold);
-                            if(totalThreshold <= finalThreshold) {
-                               //String messageData = "{\"fn\":" + "\"" + name.getText().toString().trim() + "\"" + ",\"ln\":" + "\"" + lastname.getText().toString() + "\"" + ",\"pn\":" + "\"" + cell.getText().toString() + "\"" + ",\"ad1\":" + "\"" + address.getText().toString() + "\"" + ",\"ct\":" + "\"" + city.getText().toString() + "\"" + ",\"st\":" + "\"" + stateValue + "\"" + ",\"em\":" + "\"" + email.getText().toString() + "\"" + ",\"wn\":" + "\"" + workNumber.getText().toString() + "\"" + ",\"cn\":" + "\"" + company.getText().toString() + "\"" + ",\"wne\":" + "\"" + workNumberEnterprise.getText().toString() + "\"" + ",\"fx\":" + "\"" + faxNumber.getText().toString() + "\"" + ",\"wl\":" + "\"" + websiteLink.getText().toString() + "\"" + ",\"cat\":" + "\"" + category + "\"" + ",\"cty\":" + "\"" + contactType + "\"" + ",\"rp\":" + "\"" + realPhone.getText().toString() + "\"" + ",\"o\":" + "\"" + otherInfo.getText().toString() + "\"" + ",\"tl\":" + "\"" + etTitle.getText().toString() + "\"" + ",\"ad2\":" + "\"" + etAddress2.getText().toString() + "\"" + ",\"z\":" + "\"" + zipcode.getText().toString() + "\"" + ",\"rg\":" + "\"" + region.getText().toString() + "\"" + "}";
-                               //String messageData = "{\"a\":" + "\"" + name.getText().toString().trim() + "\"" + ",\"b\":" + "\"" + lastname.getText().toString() + "\"" + ",\"c\":" + "\"" + cell.getText().toString() + "\"" + ",\"d\":" + "\"" + address.getText().toString() + "\"" + ",\"e\":" + "\"" + city.getText().toString() + "\"" + ",\"f\":" + "\"" + stateValue + "\"" + ",\"g\":" + "\"" + email.getText().toString() + "\"" + ",\"h\":" + "\"" + workNumber.getText().toString() + "\"" + ",\"i\":" + "\"" + company.getText().toString() + "\"" + ",\"j\":" + "\"" + workNumberEnterprise.getText().toString() + "\"" + ",\"k\":" + "\"" + faxNumber.getText().toString() + "\"" + ",\"l\":" + "\"" + websiteLink.getText().toString() + "\"" + ",\"m\":" + "\"" + category + "\"" + ",\"n\":" + "\"" + contactType + "\"" + ",\"o\":" + "\"" + realPhone.getText().toString() + "\"" + ",\"p\":" + "\"" + otherInfo.getText().toString() + "\"" + ",\"q\":" + "\"" + etTitle.getText().toString() + "\"" + ",\"r\":" + "\"" + etAddress2.getText().toString() + "\"" + ",\"s\":" + "\"" + zipcode.getText().toString() + "\"" + ",\"t\":" + "\"" + region.getText().toString() + "\"" + "}";
-                               String messageData = "{\"a\":" + "\"" + name.getText().toString().trim() + "\"" + ",\"b\":" + "\"" + lastname.getText().toString() + "\"" + ",\"c\":" + "\"" + cell.getText().toString() + "\"" + ",\"d\":" + "\"" + address.getText().toString() + "\"" + ",\"e\":" + "\"" + city.getText().toString() + "\"" + ",\"f\":" + "\"" + stateValue + "\"" + ",\"g\":" + "\"" + email.getText().toString() + "\"" + ",\"h\":" + "\"" + workNumber.getText().toString() + "\"" + ",\"i\":" + "\"" + company.getText().toString() + "\"" + ",\"j\":" + "\"" + workNumberEnterprise.getText().toString() + "\"" + ",\"k\":" + "\"" + faxNumber.getText().toString() + "\"" + ",\"l\":" + "\"" + websiteLink.getText().toString() + "\"" + ",\"o\":" + "\"" + realPhone.getText().toString() + "\"" + ",\"p\":" + "\"" + otherInfo.getText().toString() + "\"" + ",\"q\":" + "\"" + etTitle.getText().toString() + "\"" + ",\"r\":" + "\"" + etAddress2.getText().toString() + "\"" + ",\"s\":" + "\"" + zipcode.getText().toString() + "\"" + ",\"t\":" + "\"" + region.getText().toString() + "\"" + "}";
-
-                               //String messageData = "{\"fn\":" + "\"" + name + "\"" + ",\"ln\":" + "\"" + lastName + "\"" + ",\"pn\":" + "\"" + cell + "\"" + ",\"ad1\":" + "\"" + address1 + "\"" + ",\"ct\":" + "\"" + city + ",\"st\":" + "\"" + state + ",\"em\":" + "\"" + email + ",\"wn\":" + "\"" + workNumber + ",\"cn\":\(company),\"wne\":\(workNumberExt),\"fx\":\(fax),\"wl\":\(website),\"cat\":\(categoryType),\"cty\":\(contactType),\"rp\":\(refPhone),\"o\":\(otherInf),\"tl\":\(title),\"ad2\":\(address2),\"z\":\(zip),\"rg\":\(region)}"
-                               //String test =  "{\"fn\":" + "\"" + name + "\"" + "}";
-                              // String withoutInputOld = "{\"fn\":" + "\"" + "\"" + ",\"ln\":" + "\"" + "\"" + ",\"pn\":" + "\"" +  "\"" + ",\"ad1\":" + "\"" +  "\"" + ",\"ct\":" + "\"" +  "\"" + ",\"st\":" + "\"" +  "\"" + ",\"em\":" + "\"" +  "\"" + ",\"wn\":" + "\"" +  "\"" + ",\"cn\":" + "\"" +  "\"" + ",\"wne\":" + "\"" + "\"" + ",\"fx\":" + "\"" +  "\"" + ",\"wl\":" + "\"" + "\"" + ",\"cat\":" + "\"" + "\"" + ",\"cty\":" + "\"" + "\"" + ",\"rp\":" + "\"" + "\"" + ",\"o\":" + "\"" + "\"" + ",\"tl\":" + "\"" + "\"" + ",\"ad2\":" + "\"" + "\"" + ",\"z\":" + "\"" + "\"" + ",\"rg\":" + "\"" + "\"" + "}";
-                               //String withoutInputNew = "{\"a\":" + "\"" + "\"" + ",\"b\":" + "\"" + "\"" + ",\"c\":" + "\"" +  "\"" + ",\"d\":" + "\"" +  "\"" + ",\"e\":" + "\"" +  "\"" + ",\"f\":" + "\"" +  "\"" + ",\"g\":" + "\"" +  "\"" + ",\"h\":" + "\"" +  "\"" + ",\"i\":" + "\"" +  "\"" + ",\"j\":" + "\"" + "\"" + ",\"k\":" + "\"" +  "\"" + ",\"l\":" + "\"" + "\"" + ",\"o\":" + "\"" + "\"" + ",\"p\":" + "\"" + "\"" + ",\"q\":" + "\"" + "\"" + ",\"r\":" + "\"" + "\"" + ",\"s\":" + "\"" + "\"" + ",\"t\":" + "\"" + "\"" + "}";
-                               //String withoutInputNew1 = "{\"a\":" + "\"" + "\"" + ",\"b\":" + "\"" + "\"" + ",\"c\":" + "\"" +  "\"" + ",\"d\":" + "\"" +  "\"" + ",\"e\":" + "\"" +  "\"" + ",\"f\":" + "\"" +  "\"" + ",\"g\":" + "\"" +  "\"" + ",\"h\":" + "\"" +  "\"" + ",\"i\":" + "\"" +  "\"" + ",\"j\":" + "\"" + "\"" + ",\"k\":" + "\"" +  "\"" + ",\"l\":" + "\"" + "\"" + ",\"m\":" + "\"" + "\"" + ",\"n\":" + "\"" + "\"" + ",\"o\":" + "\"" + "\"" + ",\"p\":" + "\"" + "\"" + ",\"q\":" + "\"" + "\"" + ",\"r\":" + "\"" + "\"" + ",\"s\":" + "\"" + "\"" + ",\"t\":" + "\"" + "\"" + "}";
-//
-//                                String testMessage = "{\"fn\":\"nTunvir Rahman test ios write 2\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
-                                //Log.d(TAG, "Without input length old "+withoutInputOld.getBytes().length);
-                                //Log.d(TAG, "Without input length new "+withoutInputNew.getBytes().length);
-                                //Log.d(TAG, "Without input length new1 "+withoutInputNew1.getBytes().length);
-//                                Log.d(TAG, "full message length "+messageData.getBytes().length);
-//                                Log.d(TAG, "message gata "+messageData);
-
+                            totalThreshold =
+                                    name.getText().toString().getBytes().length +
+                                            lastname.getText().toString().getBytes().length +
+                                            cell.getText().toString().getBytes().length +
+                                            address.getText().toString().getBytes().length +
+                                            email.getText().toString().getBytes().length +
+                                            workNumber.getText().toString().getBytes().length +
+                                            company.getText().toString().getBytes().length +
+                                            otherInfo.getText().toString().getBytes().length +
+                                            etTitle.getText().toString().getBytes().length;
+                            Log.d(TAG, "Total threshold " + totalThreshold);
+                            if (totalThreshold <= finalThreshold) {
+                                String messageData = "{" +
+                                        "\"a\":" + "\"" + name.getText().toString().trim() + "\"" + "," +
+                                        "\"b\":" + "\"" + lastname.getText().toString() + "\"" + "," +
+                                        "\"c\":" + "\"" + cell.getText().toString() + "\"" + "," +
+                                        "\"d\":" + "\"" + address.getText().toString() + "\"" + "," +
+                                        "\"g\":" + "\"" + email.getText().toString() + "\"" + "," +
+                                        "\"h\":" + "\"" + workNumber.getText().toString() + "\"" + "," +
+                                        "\"i\":" + "\"" + company.getText().toString() + "\"" + "," +
+                                        "\"p\":" + "\"" + otherInfo.getText().toString() + "\"" + "," +
+                                        "\"q\":" + "\"" + etTitle.getText().toString() + "\"" +
+                                        "}";
                                 write(messageData, myTag);
 
-
-                                //String testMessage = "{\"fn\":\"nTunvir Rahman test ios write 2\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
-                                //String testMessage = "{\"fn\":\"nTunvir Rahman ios\",\"ln\":\"tusher\",\"pn\":\"01552746442\",\"ad1\":\"hhdbbey\",\"ct\":\"ydhjd\",\"st\":\"\",\"em\":\"tyeh@hjdj.com\",\"wn\":\"01552746442\",\"cn\":\"Jjdjd\",\"wne\":\"\",\"fx\":\"\",\"wl\":\"\",\"cat\":\"Category1\",\"cty\":\"Main\",\"rp\":\"\",\"o\":\"\",\"tl\":\"iOS dev latest try\",\"ad2\":\"Bdbhdh\",\"z\":\"1400\",\"rg\":\"Hhehhejd\"}";
-//                                Log.d(TAG, "Without input length "+testMessage.getBytes().length);
-//                                Log.d(TAG, "full message length "+testMessage.getBytes().length);
-//                                Log.d(TAG, "message gata "+testMessage);
-//                                write(testMessage, myTag);
 
                                 Toast.makeText(context, WRITE_SUCCESS, Toast.LENGTH_LONG).show();
                                 postWriterData();
                                 //Toast.makeText(context, "All ok", Toast.LENGTH_LONG).show();
-                            }else{
+                            } else {
                                 AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
                                 ad.setCancelable(false);
                                 ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -225,8 +190,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                                 ad.show();
                             }
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
                         ad.setCancelable(false);
                         ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -238,7 +202,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                         ad.setMessage("Error in data");
                         ad.show();
                     }
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), validate(), Toast.LENGTH_LONG).show();
                 }
 
@@ -253,8 +217,8 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             //finish();
         }
 
-        comClient = (AutoCompleteTextView)findViewById(R.id.comSymbol);
-        comClient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //comClient = (AutoCompleteTextView)findViewById(R.id.comSymbol);
+        /*comClient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (comClient.getText().length() > 0) {
@@ -262,11 +226,6 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                     InputMethodManager imm = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(llMain.getWindowToken(), 0);
 
-                    //Toast.makeText(getApplicationContext(), "selected "+comClient.getText().toString(), Toast.LENGTH_LONG).show();
-//                    String b4companyCode = comClient.getText().toString();
-//                    String[] parts = b4companyCode.split("-");
-//                    String code = parts[0]; // 004
-//                    companyCode = code;
 
                     String Code = comClient.getText().toString();
                     companyCode = Code;
@@ -276,23 +235,23 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                 } else {
                     Toast.makeText(getApplicationContext(), "Please select a company", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+            }}
+        );*/
         sourceAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1);
 
-        comClient.setOnClickListener(new View.OnClickListener() {
+        /*comClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 comClient.showDropDown();
             }
-        });
+        });*/
 
         pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
-        writeTagFilters = new IntentFilter[] { tagDetected };
+        writeTagFilters = new IntentFilter[]{tagDetected};
 
-        btnClear = (Button)findViewById(R.id.btnClear);
+        btnClear = (Button) findViewById(R.id.btnClear);
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -300,26 +259,26 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                 lastname.setText("");
                 cell.setText("");
                 address.setText("");
-                city.setText("");
-                state.setText("");
+                //city.setText("");
+                //state.setText("");
                 email.setText("");
                 workNumber.setText("");
                 company.setText("");
-                workNumberEnterprise.setText("");
-                faxNumber.setText("");
-                websiteLink.setText("");
-                realPhone.setText("");
+                //workNumberEnterprise.setText("");
+                //faxNumber.setText("");
+                //websiteLink.setText("");
+                //realPhone.setText("");
                 otherInfo.setText("");
                 etTitle.setText("");
-                etAddress2.setText("");
-                zipcode.setText("");
-                region.setText("");
+                //etAddress2.setText("");
+                //zipcode.setText("");
+                //region.setText("");
             }
         });
 
-        name = (EditText)findViewById(R.id.etFirstName);
-        lastname = (EditText)findViewById(R.id.etLastName);
-        cell = (EditText)findViewById(R.id.etCell);
+        name = (EditText) findViewById(R.id.etFirstName);
+        lastname = (EditText) findViewById(R.id.etLastName);
+        cell = (EditText) findViewById(R.id.etCell);
         cell.setOnFocusChangeListener(this);
         cell.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -327,49 +286,49 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                 if (hasFocus) {
                     //Toast.makeText(getApplicationContext(), "Got the focus", Toast.LENGTH_LONG).show();
                 } else {
-                   // Toast.makeText(getApplicationContext(), "Lost the focus", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getApplicationContext(), "Lost the focus", Toast.LENGTH_LONG).show();
                     getUser();
                 }
             }
         });
 
-        address = (EditText)findViewById(R.id.etAddress);
-        region = (EditText)findViewById(R.id.etRegion);
-        zipcode = (EditText)findViewById(R.id.etZipCode);
-        city = (EditText)findViewById(R.id.etCity);
-        state = (EditText)findViewById(R.id.etState);
-        email = (EditText)findViewById(R.id.etEmail);
-        workNumber = (EditText)findViewById(R.id.etWorkNumber);
-        company = (EditText)findViewById(R.id.etCompany);
-        workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
-        faxNumber = (EditText)findViewById(R.id.etFaxNumber);
-        websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
-        realPhone = (EditText)findViewById(R.id.etRealPhone);
-        otherInfo = (EditText)findViewById(R.id.etOtherInfo);
-        etTitle = (EditText)findViewById(R.id.etTitle);
-        etAddress2 = (EditText)findViewById(R.id.etAddress2);
+        address = (EditText) findViewById(R.id.etAddress);
+        //region = (EditText)findViewById(R.id.etRegion);
+        //zipcode = (EditText)findViewById(R.id.etZipCode);
+        //city = (EditText)findViewById(R.id.etCity);
+        //state = (EditText)findViewById(R.id.etState);
+        email = (EditText) findViewById(R.id.etEmail);
+        workNumber = (EditText) findViewById(R.id.etWorkNumber);
+        company = (EditText) findViewById(R.id.etCompany);
+        //workNumberEnterprise = (EditText)findViewById(R.id.etWorkNumberEnterprise);
+        //faxNumber = (EditText)findViewById(R.id.etFaxNumber);
+        //websiteLink = (EditText)findViewById(R.id.etWebsiteLink);
+        //realPhone = (EditText)findViewById(R.id.etRealPhone);
+        otherInfo = (EditText) findViewById(R.id.etOtherInfo);
+        etTitle = (EditText) findViewById(R.id.etTitle);
+        //etAddress2 = (EditText)findViewById(R.id.etAddress2);
 
         mCompositeDisposable = new CompositeDisposable();
         apiInterface = ApiUtils.getService();
-        getStates();
+        //getStates();
     }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         String cellNumber = cell.getText().toString();
 
-        if(cellNumber.length() == 0) {
-            if(cell.requestFocus()) {
+        if (cellNumber.length() == 0) {
+            if (cell.requestFocus()) {
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                 //Toast.makeText(WriteActivity.this, "Dieser Liganame ist bereits vergeben", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    public int getIndex(String stateName){
+    public int getIndex(String stateName) {
         int index = 0;
-        for(int i=0; i<stateList.size(); i++){
-            if(stateList.get(i).getSTATENAME().equals(stateName)){
+        for (int i = 0; i < stateList.size(); i++) {
+            if (stateList.get(i).getSTATENAME().equals(stateName)) {
                 index = i;
                 break;
             }
@@ -377,28 +336,36 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
         return index;
     }
 
-//    public void saveContacts(){
-//        Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
-//        intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-//        intent.putExtra(ContactsContract.Intents.Insert.EMAIL, email.getText().toString());
-//        intent.putExtra(ContactsContract.Intents.Insert.PHONE, cell.getText().toString());
-//        intent.putExtra(ContactsContract.Intents.Insert.NAME, name.getText().toString());
-//        startActivity(intent);
-//    }
-
-    public void postWriterData(){
-        if(isNetworkAvailable()){
+    public void postWriterData() {
+        if (isNetworkAvailable()) {
             dialog = ProgressDialog.show(WriteActivity.this, "", "Data Posting. Please wait.....", true);
-            //final APIInterface apiService = RetrofitClient.getClientMfg().create(APIInterface.class);
-            //       Toast.makeText(getApplicationContext(), "Api "+OnlineOrder.someTest(MainActivity.headerValue), Toast.LENGTH_LONG).show();
-            //Log.d(TAG, "name "+ InternalDataProvider.getInstance().getPortfolioManagerModel().getName()+" date1 "+InternalDataProvider.getInstance().getPortfolioManagerModel().getFirstDate()+" date2 "+InternalDataProvider.getInstance().getPortfolioManagerModel().getSecondDate()+" type "+InternalDataProvider.getInstance().getPortfolioManagerModel().getType());
-            String Data = "FirstName:"+name.getText().toString()+"|LastName:"+lastname.getText().toString()+"|CompanyName:"+company.getText().toString()+"|Phone:"+cell.getText().toString()+"|Email:"+email.getText().toString()+"|Address:"+address.getText().toString()+"|City:"+city.getText().toString()+"|State:"+stateValue+"|WorkPhoneExt:"+workNumberEnterprise.getText().toString()+"|Fax:"+faxNumber.getText().toString()+"|Website:"+websiteLink.getText().toString()+"|Category:"+category+"|TypeOfContact:"+contactType+"|RefPhone:"+realPhone.getText().toString()+"|Other:"+otherInfo.getText().toString()+"|WorkPhone:"+workNumber.getText().toString()+"|Title:"+etTitle.getText().toString()+"|Address1:"+etAddress2.getText().toString()+"|Zip:"+zipcode.getText().toString()+"|Region:"+region.getText().toString();
+            String Data =
+                    "FirstName:" + name.getText().toString() +
+                            "|LastName:" + lastname.getText().toString() +
+                            "|CompanyName:" + company.getText().toString() +
+                            "|Phone:" + cell.getText().toString() +
+                            "|Email:" + email.getText().toString() +
+                            "|Address:" + address.getText().toString() +
+                            //"|City:" + city.getText().toString() +
+                            //"|State:" + stateValue +
+                            //"|WorkPhoneExt:" + workNumberEnterprise.getText().toString() +
+                            //"|Fax:" + faxNumber.getText().toString() +
+                            //"|Website:" + websiteLink.getText().toString() +
+                            //"|Category:" + category +
+                            //"|TypeOfContact:" + contactType +
+                            //"|RefPhone:" + realPhone.getText().toString() +
+                            "|Other:" + otherInfo.getText().toString() +
+                            "|WorkPhone:" + workNumber.getText().toString() +
+                            "|Title:" + etTitle.getText().toString();
+                            //"|Address1:" + etAddress2.getText().toString() +
+                            //"|Zip:" + zipcode.getText().toString() +
+                            //"|Region:" + region.getText().toString();
 
             mCompositeDisposable.add(apiInterface.postWriteData(cell.getText().toString(), email.getText().toString(), Data) // while release give user id
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::handleResponse, this::handleError));
-        }else{
+        } else {
             AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
             ad.setCancelable(false);
             ad.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
@@ -423,9 +390,9 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
     private void handleResponse(WriterPostedResponse clientResponse) {
         dialog.dismiss();
 
-        Log.d(TAG, "Response of PF response "+clientResponse);
+        Log.d(TAG, "Response of PF response " + clientResponse);
 
-        if(clientResponse.getStatus()){
+        if (clientResponse.getStatus()) {
             AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
             ad.setCancelable(false);
             ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
@@ -437,7 +404,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             ad.setTitle("Status");
             ad.setMessage("Data written to nfg tag and posted successfully on web");
             ad.show();
-        }else{
+        } else {
             AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
             ad.setCancelable(false);
             ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
@@ -454,7 +421,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
 
     private void handleError(Throwable error) {
         dialog.dismiss();
-        Log.d(TAG, "Error "+error);
+        Log.d(TAG, "Error " + error);
         AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
         ad.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
             @Override
@@ -468,12 +435,12 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             }
         });
         ad.setTitle("Error");
-        ad.setMessage(error+"");
+        ad.setMessage(error + "");
         ad.show();
         //Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
     }
 
-    public void getStates(){
+    /*public void getStates(){
 
         if(isNetworkAvailable()){
             dialog = ProgressDialog.show(WriteActivity.this, "", "Data loading. Please wait.....", true);
@@ -498,15 +465,15 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             ad.setMessage("Please check your internet connection and try again");
             ad.show();
         }
-    }
+    }*/
 
 
-    private void handleResponses(StateResponse clientResponse) {
+    /*private void handleResponses(StateResponse clientResponse) {
         dialog.dismiss();
 
-        Log.d(TAG, "State Response "+clientResponse);
+        Log.d(TAG, "State Response " + clientResponse);
 
-        if(clientResponse.getStatus()){
+        if (clientResponse.getStatus()) {
             Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
             stateList.clear();
             stateList.addAll(clientResponse.getData());
@@ -515,11 +482,11 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                 sourceAdapter.add(clientResponse.getData().get(i).getSTATENAME());
                 //sourceAdapter.add(clientResponse.getData().get(i).getInvid()+"- "+clientResponse.getData().get(i).getInvname());
             }
-            comClient.setAdapter(sourceAdapter);
+            //comClient.setAdapter(sourceAdapter);
             sourceAdapter.notifyDataSetChanged();
-            comClient.setText("");
+            //comClient.setText("");
             //getContactType();
-        }else{
+        } else {
             sourceAdapter.clear();
             //recyclerView.setAdapter(null);
             //Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
@@ -535,162 +502,17 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             ad.show();
         }
 
-    }
+    }*/
 
-    private void handleErrors(Throwable error) {
+    /*private void handleErrors(Throwable error) {
         dialog.dismiss();
-        Log.d(TAG, "Error "+error);
+        Log.d(TAG, "Error " + error);
         Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
-    }
-
-//    public void getContactType(){
-//
-//        if(isNetworkAvailable()){
-//            dialog = ProgressDialog.show(WriteActivity.this, "", "Data loading. Please wait.....", true);
-//            mCompositeDisposable.add(apiInterface.getContactType() //userData.getUserDataModel().getEmName()
-//                    .subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe(this::handleResponsesContact, this::handleErrorsContact));
-//        }else{
-//            AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//            ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    finish();
-//                }
-//            });
-//            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    getContactType();
-//                }
-//            });
-//            ad.setMessage("Please check your internet connection and try again");
-//            ad.show();
-//        }
-//    }
-//
-//
-//    private void handleResponsesContact(ContactTypeResponse clientResponse) {
-//        dialog.dismiss();
-//
-//        Log.d(TAG, "Response of product purchase view api "+clientResponse);
-//
-//        if(clientResponse.getStatus()){
-//            Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
-//            contactTypeList.clear();
-//            contactTypeList.addAll(clientResponse.getData());
-//            adapterTyp = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-//            adapterTyp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            adapterTyp.add("Select Contact Type");
-//            adapterTyp.addAll(contactTypeList);
-//            spinTyp.setAdapter(adapterTyp);
-//            //getCategory();
-//        }else{
-//            //recyclerView.setAdapter(null);
-//            //Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
-//            AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    // loadInvestorInfo();
-//                    getContactType();
-//                }
-//            });
-//            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    //finish();
-//                }
-//            });
-//            ad.setMessage("You are not allowed");
-//            ad.setCancelable(false);
-//            ad.show();
-//        }
-//
-//    }
-//
-//    private void handleErrorsContact(Throwable error) {
-//        dialog.dismiss();
-//        Log.d(TAG, "Error "+error);
-//        Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
-//    }
+    }*/
 
 
-//    public void getCategory(){
-//
-//        if(isNetworkAvailable()){
-//            dialog = ProgressDialog.show(WriteActivity.this, "", "Data loading. Please wait.....", true);
-//            mCompositeDisposable.add(apiInterface.getCategoryType() //userData.getUserDataModel().getEmName()
-//                    .subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe(this::handleResponsesCategory, this::handleErrorsCategory));
-//        }else{
-//            AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//            ad.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    finish();
-//                }
-//            });
-//            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    getCategory();
-//                }
-//            });
-//            ad.setMessage("Please check your internet connection and try again");
-//            ad.show();
-//        }
-//    }
-//
-//
-//    private void handleResponsesCategory(CategoryResponse clientResponse) {
-//        dialog.dismiss();
-//
-//        Log.d(TAG, "Response of product purchase view api "+clientResponse);
-//
-//        if(clientResponse.getStatus()){
-//            Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
-//            categoryList.clear();
-//            categoryList.addAll(clientResponse.getData());
-//            adapterCat = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item);
-//            adapterCat.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//            adapterCat.add("Select Category");
-//            adapterCat.addAll(categoryList);
-//            spinCat.setAdapter(adapterCat);
-//        }else{
-//            //recyclerView.setAdapter(null);
-//            //Toast.makeText(getApplicationContext(), clientResponse.getMessage(), Toast.LENGTH_LONG).show();
-//            AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//            ad.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    // loadInvestorInfo();
-//                    getContactType();
-//                }
-//            });
-//            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    //finish();
-//                }
-//            });
-//            ad.setMessage("You are not allowed");
-//            ad.setCancelable(false);
-//            ad.show();
-//        }
-//
-//    }
-//
-//    private void handleErrorsCategory(Throwable error) {
-//        dialog.dismiss();
-//        Log.d(TAG, "Error "+error);
-//        Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
-//    }
-
-    public void getUser(){
-        if(isNetworkAvailable()){
+    public void getUser() {
+        if (isNetworkAvailable()) {
             //dialog = ProgressDialog.show(WriteActivity.this, "", "Data Loading. Please wait.....", true);
             //final APIInterface apiService = RetrofitClient.getClientMfg().create(APIInterface.class);
             //       Toast.makeText(getApplicationContext(), "Api "+OnlineOrder.someTest(MainActivity.headerValue), Toast.LENGTH_LONG).show();
@@ -699,7 +521,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(this::handleResponseUser, this::handleErrorUser));
-        }else{
+        } else {
             AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
             ad.setCancelable(false);
             ad.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
@@ -724,126 +546,59 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
     private void handleResponseUser(ProfileResponse clientResponse) {
         //dialog.dismiss();
 
-        Log.d(TAG, "Response of PF response "+clientResponse);
+        Log.d(TAG, "Response of PF response " + clientResponse);
 
-        if(clientResponse.getStatus()){
+        if (clientResponse.getStatus()) {
             name.setText(clientResponse.getData().get(0).getFirstName());
             lastname.setText(clientResponse.getData().get(0).getLastName());
             company.setText(clientResponse.getData().get(0).getCompanyName());
             etTitle.setText(clientResponse.getData().get(0).getTitle());
             address.setText(clientResponse.getData().get(0).getAddress());
-            etAddress2.setText(clientResponse.getData().get(0).getAddress1());
-            city.setText(clientResponse.getData().get(0).getCity());
+            //etAddress2.setText(clientResponse.getData().get(0).getAddress1());
+            //city.setText(clientResponse.getData().get(0).getCity());
 
             //comClient.setText(clientResponse.getData().get(0).getState());
-            String stateValueString = clientResponse.getData().get(0).getState();
+            //String stateValueString = clientResponse.getData().get(0).getState();
             //String stateValueString = "NY";
-            if (stateValueString != null) {
-                for(int i=0; i<stateList.size(); i++){
-                    if(stateList.get(i).getState().equalsIgnoreCase(stateValueString)){
-                        comClient.setText(stateList.get(i).getSTATENAME());
+            /*if (stateValueString != null) {
+                for (int i = 0; i < stateList.size(); i++) {
+                    if (stateList.get(i).getState().equalsIgnoreCase(stateValueString)) {
+                        //comClient.setText(stateList.get(i).getSTATENAME());
                         break;
                     }
                 }
-            }
-            stateValue = clientResponse.getData().get(0).getState();
+            }*/
+            //stateValue = clientResponse.getData().get(0).getState();
             //s.setText(clientResponse.getData().get(0).getFirstName());
 
             email.setText(clientResponse.getData().get(0).getEmail());
             workNumber.setText(clientResponse.getData().get(0).getWorkPhone());
-            workNumberEnterprise.setText(clientResponse.getData().get(0).getWorkPhoneExt());
-            faxNumber.setText(clientResponse.getData().get(0).getFax());
-            region.setText(clientResponse.getData().get(0).getRegion());
-            zipcode.setText(clientResponse.getData().get(0).getZip());
+            //workNumberEnterprise.setText(clientResponse.getData().get(0).getWorkPhoneExt());
+            //faxNumber.setText(clientResponse.getData().get(0).getFax());
+            //region.setText(clientResponse.getData().get(0).getRegion());
+            //zipcode.setText(clientResponse.getData().get(0).getZip());
 
-//            String comparedValue = clientResponse.getData().get(0).getCategory();
-//            if (comparedValue != null) {
-//                int position = 0;
-//                for(int i=0; i<categoryList.size(); i++){
-//                    if(categoryList.get(i).toString().equals(comparedValue)){
-//                        position = i;
-//                        break;
-//                    }
-//                }
-//                spinCat.setSelection(position+1);
-//            }
-//            category = clientResponse.getData().get(0).getCategory();
-//
-//            String comparedValueCat = clientResponse.getData().get(0).getTypeOfContact();
-//            if (comparedValueCat != null) {
-////                int spinnerPosition = adapterCat.getPosition(comparedValue);
-////                spinCat.setSelection(spinnerPosition);
-//                int position = 0;
-//                for(int i=0; i<contactTypeList.size(); i++){
-//                    if(contactTypeList.get(i).toString().equals(comparedValueCat)){
-//                        position = i;
-//                        break;
-//                    }
-//                }
-//                spinTyp.setSelection(position+1);
-//            }
-//            contactType = clientResponse.getData().get(0).getTypeOfContact();
 
-            websiteLink.setText(clientResponse.getData().get(0).getWebsite());
-            realPhone.setText(clientResponse.getData().get(0).getRefPhone());
+            //websiteLink.setText(clientResponse.getData().get(0).getWebsite());
+            //realPhone.setText(clientResponse.getData().get(0).getRefPhone());
             otherInfo.setText(clientResponse.getData().get(0).getOther());
 
-//            AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//            ad.setCancelable(false);
-//            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//
-//                }
-//            });
-//            ad.setTitle("Status");
-//            ad.setMessage("Data retrieved successfully");
-//            ad.show();
-        }else{
-//            AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//            ad.setCancelable(false);
-//            ad.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                }
-//            });
-//            ad.setTitle("Error");
-//            ad.setMessage(clientResponse.getMessage());
-//            ad.show();
+        } else {
+
         }
 
     }
 
     private void handleErrorUser(Throwable error) {
-        //dialog.dismiss();
-//        Log.d(TAG, "Error "+error);
-//        AlertDialog.Builder ad = new AlertDialog.Builder(WriteActivity.this);
-//        ad.setNegativeButton("Retry", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                getUser();
-//            }
-//        });
-//        ad.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//            }
-//        });
-//        ad.setTitle("Error");
-//        ad.setMessage(error+"");
-//        ad.show();
-        //Toast.makeText(getApplicationContext(), "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
     }
 
-    private boolean isNetworkAvailable(){
-        ConnectivityManager connectivityManager = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             //we are connected to a network
             return true;
-        }
-        else
+        } else
             return false;
     }
 
@@ -863,6 +618,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             buildTagViews(msgs);
         }
     }
+
     private void buildTagViews(NdefMessage[] msgs) {
         if (msgs == null || msgs.length == 0) return;
 
@@ -885,11 +641,12 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             JSONObject jsonObject = new JSONObject(text);  //"{\"phonetype\":\"N95\",\"cat\":\"WP\"}"
             //Toast.makeText(getApplicationContext(), jsonObject.get("Name")+"", Toast.LENGTH_LONG).show();
             //readTag.setText(jsonObject.get("Name")+"");
-        }catch (JSONException err){
+        } catch (JSONException err) {
             Log.d("Error", err.toString());
         }
     }
-//
+
+    //
     private String validate() {
         //boolean isValid = true;
 
@@ -900,14 +657,10 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             return isValid;
         }
 
-//        if (TextUtils.isEmpty(zipcode.getText().toString().trim())) {
-//            isValid = "Please enter zip code";
-//            return isValid;
-//        }
 
-        if((cell.getText().toString().trim().length()>9 & cell.getText().toString().trim().length()<=20) & cell.getText().toString().matches("^(?=(?:\\D*\\d){10,18}\\D*$)(?:\\(?0?[0-9]{1,3}\\)?|\\+?[0-9]{1,3})[\\s-]?(?:\\(0?[0-9]{1,5}\\)|[0-9]{1,5})[-\\s]?[0-9][\\d\\s-]{5,7}\\s?(?:x[\\d-]{0,4})?(?:[-\\s]?[0-9]{1,4}|[-\\s])$")){
+        if ((cell.getText().toString().trim().length() > 9 & cell.getText().toString().trim().length() <= 20) & cell.getText().toString().matches("^(?=(?:\\D*\\d){10,18}\\D*$)(?:\\(?0?[0-9]{1,3}\\)?|\\+?[0-9]{1,3})[\\s-]?(?:\\(0?[0-9]{1,5}\\)|[0-9]{1,5})[-\\s]?[0-9][\\d\\s-]{5,7}\\s?(?:x[\\d-]{0,4})?(?:[-\\s]?[0-9]{1,4}|[-\\s])$")) {
 
-        }else{
+        } else {
             isValid = "Please enter valid cell number";
             return isValid;
         }
@@ -922,76 +675,24 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
             isValid = "Please enter last name";
             return isValid;
         }
-//        if (TextUtils.isEmpty(address.getText().toString().trim())) {
-//            isValid = "Please enter address";
-//            return isValid;
-//        }
-//        if (TextUtils.isEmpty(city.getText().toString().trim())) {
-//            isValid = "Please enter city";
-//            return isValid;
-//        }
-//        if (TextUtils.isEmpty(state.getText().toString().trim())) {
-//            isValid = "Please enter state";
-//            return isValid;
-//        }
-//        if(stateValue.length()<1){
-//            isValid = "Please choose a state";
-//            return isValid;
-//        }
+
         if (TextUtils.isEmpty(email.getText().toString().trim())) {
             isValid = "Please enter email";
             return isValid;
         }
         if (TextUtils.isEmpty(workNumber.getText().toString().trim())) {
-            isValid = "Please enter work number";
+            isValid = "Please enter Emergency Contact";
             return isValid;
         }
-//        if (TextUtils.isEmpty(workNumberEnterprise.getText().toString().trim())) {
-//            isValid = "Please enter work number enterprise";
-//            return isValid;
-//        }
-//        if (TextUtils.isEmpty(company.getText().toString().trim())) {
-//            isValid = "Please enter company name";
-//            return isValid;
-//        }
+
         return isValid;
     }
 
-//    public void onItemSelected(AdapterView<?> parent, View view,
-//                               int pos, long id) {
-//        switch (parent.getId()) {
-//            case R.id.spinCategory:
-//                if(pos==0){
-//                    category = "";
-//                }else {
-//                    category = categoryList.get(pos-1).getDescription();
-//                }
-//                //Toast.makeText(getApplicationContext(), category, Toast.LENGTH_LONG).show();
-//                break;
-//            case R.id.spinContactType:
-//                if(pos==0){
-//                    contactType = "";
-//                }else {
-//                    contactType = contactTypeList.get(pos-1).getDescription();
-//                }
-//                //Toast.makeText(getApplicationContext(), contactType, Toast.LENGTH_LONG).show();
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-//
-//    @Override
-//    public void onNothingSelected(AdapterView<?> arg0) {
-//        // TODO Auto-generated method stub
-//    }
-
-//
     @Override
     protected void onNewIntent(Intent intent) {
         setIntent(intent);
         readFromIntent(intent);
-        if(NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())){
+        if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
             myTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         }
     }
@@ -1055,7 +756,7 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
 
     private void write(String text, Tag tag) throws IOException, FormatException {
 
-        NdefRecord[] records = { createRecord(text) };
+        NdefRecord[] records = {createRecord(text)};
         NdefMessage message = new NdefMessage(records);
         // Get an instance of Ndef for the tag.
         Ndef ndef = Ndef.get(tag);
@@ -1066,22 +767,23 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
         // Close the connection
         ndef.close();
     }
+
     private NdefRecord createRecord(String text) throws UnsupportedEncodingException {
-        String lang       = "en";
-        byte[] textBytes  = text.getBytes();
-        byte[] langBytes  = lang.getBytes("US-ASCII");
-        int    langLength = langBytes.length;
-        int    textLength = textBytes.length;
-        byte[] payload    = new byte[1 + langLength + textLength];
+        String lang = "en";
+        byte[] textBytes = text.getBytes();
+        byte[] langBytes = lang.getBytes("US-ASCII");
+        int langLength = langBytes.length;
+        int textLength = textBytes.length;
+        byte[] payload = new byte[1 + langLength + textLength];
 
         // set status byte (see NDEF spec for actual bits)
         payload[0] = (byte) langLength;
 
         // copy langbytes and textbytes into payload
-        System.arraycopy(langBytes, 0, payload, 1,              langLength);
+        System.arraycopy(langBytes, 0, payload, 1, langLength);
         System.arraycopy(textBytes, 0, payload, 1 + langLength, textLength);
 
-        NdefRecord recordNFC = new NdefRecord(NdefRecord.TNF_WELL_KNOWN,  NdefRecord.RTD_TEXT,  new byte[0], payload);
+        NdefRecord recordNFC = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload);
 
         return recordNFC;
     }
@@ -1089,14 +791,15 @@ public class WriteActivity extends AppCompatActivity implements View.OnFocusChan
     /******************************************************************************
      **********************************Enable Write********************************
      ******************************************************************************/
-    private void WriteModeOn(){
+    private void WriteModeOn() {
         writeMode = true;
         nfcAdapter.enableForegroundDispatch(this, pendingIntent, writeTagFilters, null);
     }
+
     /******************************************************************************
      **********************************Disable Write*******************************
      ******************************************************************************/
-    private void WriteModeOff(){
+    private void WriteModeOff() {
         writeMode = false;
         nfcAdapter.disableForegroundDispatch(this);
     }

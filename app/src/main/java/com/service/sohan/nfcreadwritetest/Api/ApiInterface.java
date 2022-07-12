@@ -15,13 +15,13 @@ import retrofit2.http.Query;
 public interface ApiInterface {
 
     // post writer data
-    @GET("contact.ashx?datatype=add_user_write")
+    @GET("patient.ashx?datatype=add_user_write")
     Observable<WriterPostedResponse> postWriteData(@Query("p") String phone,
                                                    @Query("e") String email,
                                                    @Query("Data") String Data);
 
     // post reader data
-    @GET("contact.ashx?datatype=add_contact_read")
+    @GET("patient.ashx?datatype=add_contact_read")
     Observable<ReaderDataPostedResponse> postReaderData(@Query("shared") String shared,
                                                         @Query("name") String name,
                                                         @Query("fp") String fp,
@@ -29,23 +29,24 @@ public interface ApiInterface {
                                                         @Query("Data") String Data);
 
     // post reader data
-    @GET("contact.ashx?datatype=get_states")
+    @GET("patient.ashx?datatype=get_states")
     Observable<StateResponse> getStates();
 
     // get contact types
-    @GET("contact.ashx?datatype=get_contactTypes")
+    @GET("patient.ashx?datatype=get_contactTypes")
     Observable<ContactTypeResponse> getContactType();
 
     // get category types
-    @GET("contact.ashx?datatype=get_categories")
+    @GET("patient.ashx?datatype=get_categories")
     Observable<CategoryResponse> getCategoryType();
 
     // get profile types
-    @GET("contact.ashx?datatype=get_user")
+    //@GET("contact.ashx?datatype=get_user")
+    @GET("patient.ashx?datatype=get_user")
     Observable<ProfileResponse> getProfile(@Query("p") String p);
 
     // get version
-    @GET("contact.ashx?datatype=get_version")
+    @GET("patient.ashx?datatype=get_version")
     Observable<VersionResponse> getVersion();
 
 }
